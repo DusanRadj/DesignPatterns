@@ -1,0 +1,7 @@
+c:\users\jasmina\documents\visual studio 2010\Projects\DesignPatterns\DesignPatterns\bin\Debug\DesignPatterns.exe
+c:\users\jasmina\documents\visual studio 2010\Projects\DesignPatterns\DesignPatterns\bin\Debug\DesignPatterns.pdb
+c:\users\jasmina\documents\visual studio 2010\Projects\DesignPatterns\DesignPatterns\obj\x86\Debug\DesignPatterns.exe
+c:\users\jasmina\documents\visual studio 2010\Projects\DesignPatterns\DesignPatterns\obj\x86\Debug\DesignPatterns.pdb
+C:\Users\Jasmina\Documents\Visual Studio 2010\Projects\DesignPatterns\DesignPatterns\obj\x86\Debug\DesignPatterns.csprojResolveAssemblyReference.cache
+C:\Users\Jasmina\documents\visual studio 2010\Projects\DesignPatterns\DesignPatterns\obj\x86\Debug\Interop.MediaPlayer.dll
+C:\Users\Jasmina\documents\visual studio 2010\Projects\DesignPatterns\DesignPatterns\obj\x86\Debug\DesignPatterns.csproj.ResolveComReference.cache
