@@ -23,7 +23,7 @@ namespace DesignPatterns
                 if (option == "1")
                 {
                     //MusicPlayerApp app = new MusicPlayerApp();
-                    DesignPatterns.musicPlayer.withoutPattern.MusicPlayerApp app = new musicPlayer.withoutPattern.MusicPlayerApp();
+                    DesignPatterns.musicPlayer.statePattern.MusicPlayerApp app = new musicPlayer.statePattern.MusicPlayerApp();
                     app.startApp();
                 }
                 else

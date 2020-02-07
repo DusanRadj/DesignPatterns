@@ -24,18 +24,18 @@ namespace DesignPatterns.musicPlayer.withoutPattern
 
         private void displayMenu()
         {
-            Console.WriteLine("----------------------------");
-            Console.WriteLine("Options: ");
-            Console.WriteLine("1. Turn on");
-            Console.WriteLine("2. Play");
-            Console.WriteLine("3. Pause");
-            Console.WriteLine("4. Stop");
-            Console.WriteLine("5. Next");
-            Console.WriteLine("6. Previous");
-            Console.WriteLine("7. Lock/Unlock");
-            Console.WriteLine("8. Turn off");
-            Console.WriteLine("0. Exit");
-            Console.WriteLine("----------------------------");
+            Console.WriteLine("---------------------------------------                              ");
+            Console.WriteLine("Options:                                                             ");
+            Console.WriteLine("1. Turn on                                                           ");
+            Console.WriteLine("2. Play                                                              ");
+            Console.WriteLine("3. Pause                                                             ");
+            Console.WriteLine("4. Stop                                                              ");
+            Console.WriteLine("5. Next                                                              ");
+            Console.WriteLine("6. Previous                                                          ");
+            Console.WriteLine("7. Lock/Unlock                                                       ");
+            Console.WriteLine("8. Turn off                                                          ");
+            Console.WriteLine("0. Exit                                                              ");
+            Console.WriteLine("----------------------------------------                             ");
         }
 
         private int callAction()
@@ -96,6 +96,12 @@ namespace DesignPatterns.musicPlayer.withoutPattern
             this.displayMenu();
             do
             {
+                int leftPosition = Console.CursorLeft;
+                int topPosition = Console.CursorTop;
+                Console.SetCursorPosition(Console.WindowLeft, Console.WindowTop);
+                this.displayMenu();
+                Console.SetCursorPosition(leftPosition, topPosition);
+
                 option = this.callAction();
             } while (option != 0);
         }

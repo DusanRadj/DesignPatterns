@@ -7,57 +7,49 @@ using DesignPatterns.musicPlayer.statePattern.model;
 
 namespace DesignPatterns.musicPlayer.statePattern.states
 {
-    class LockedState : IState
+    class LockedState : AbstractState
     {
-        private MusicPlayer musicPlayer;
 
-        public LockedState(MusicPlayer musicPlayer)
+        public LockedState(MusicPlayer musicPlayer) : base(musicPlayer)
         {
-            this.musicPlayer = musicPlayer;
+            
         }
 
-        public void turnOn()
-        {
-            Console.WriteLine("Device is already turned on!");
-        }
-
-        public void turnOff()
-        {
-            Console.WriteLine("Device is shutting down...");
-            Thread.Sleep(2000);
-            Console.WriteLine("Device turned off.");
-            musicPlayer.CurrentState = musicPlayer.turnedOffState;
-        }
-
-        public void play()
+        public override void play()
         {
             Console.WriteLine("You need to unlock your device first!");
         }
 
-        public void pause()
+        public override void pause()
         {
             Console.WriteLine("You need to unlock your device first!");
         }
 
-        public void stop()
+        public override void stop()
         {
             Console.WriteLine("You need to unlock your device first!");
         }
 
-        public void lockUnlock()
+        public override void lockUnlock()
         {
             Console.WriteLine("Device unlocked...");
             musicPlayer.CurrentState = musicPlayer.standbyState;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("STATE CHANGED : LOCKED_STATE ---> STANDBY_STATE");
+            Console.ResetColor();
         }
 
-        public void next()
+        public override void next()
         {
             Console.WriteLine("You need to unlock your device first!");
         }
 
-        public void previous()
+        public override void previous()
         {
             Console.WriteLine("You need to unlock your device first!");
         }
+
+       
+       
     }
 }

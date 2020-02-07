@@ -9,14 +9,14 @@ namespace DesignPatterns.musicPlayer.statePattern.model
 {
     class MusicPlayer
     {
-        public IState turnedOffState;
-        public IState standbyState;
-        public IState lockedState;
-        public IState playingState;
-        public IState pausedState;
+        public AbstractState turnedOffState;
+        public AbstractState standbyState;
+        public AbstractState lockedState;
+        public AbstractState playingState;
+        public AbstractState pausedState;
 
-        private IState currentState;
-        public IState CurrentState
+        private AbstractState currentState;
+        public AbstractState CurrentState
         {
             get { return currentState; }
             set { currentState = value; }

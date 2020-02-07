@@ -231,21 +231,21 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
 
         public void displayMenu()
         {
-            Console.WriteLine("----------------------------");
-            Console.WriteLine("Options: ");
-            Console.WriteLine("1. Create YouTube channel");
-            Console.WriteLine("2. Create Google account");
-            Console.WriteLine("3. Create video for youtube channel");
-            Console.WriteLine("4. Display all channels and google accounts");
-            Console.WriteLine("5. Subscribe channel");
-            Console.WriteLine("6. Unsubscribe channel");
-            Console.WriteLine("7. Subscribe google account");
-            Console.WriteLine("8. Unsubscribe google account");
-            Console.WriteLine("9. View youtube channel notifications");
-            Console.WriteLine("10. Clear youtube channel notifications");
-            Console.WriteLine("11. View google account emails");
-            Console.WriteLine("0. Exit");
-            Console.WriteLine("----------------------------");
+            Console.WriteLine("---------------------------------------------------------");
+            Console.WriteLine("Options:                                                 ");
+            Console.WriteLine("1. Create YouTube channel                                ");
+            Console.WriteLine("2. Create Google account                                 ");
+            Console.WriteLine("3. Create video for youtube channel                      ");
+            Console.WriteLine("4. Display all channels and google accounts              ");
+            Console.WriteLine("5. Subscribe channel                                     ");
+            Console.WriteLine("6. Unsubscribe channel                                   ");
+            Console.WriteLine("7. Subscribe google account                              ");
+            Console.WriteLine("8. Unsubscribe google account                            ");
+            Console.WriteLine("9. View youtube channel notifications                    ");
+            Console.WriteLine("10. Clear youtube channel notifications                  ");
+            Console.WriteLine("11. View google account emails                           ");
+            Console.WriteLine("0. Exit                                                  ");
+            Console.WriteLine("---------------------------------------------------------");
         }
 
         public int callAction()
@@ -313,8 +313,14 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
             this.displayMenu();
             do
             {
+                int leftPosition = Console.CursorLeft;
+                int topPosition = Console.CursorTop;
+                Console.SetCursorPosition(Console.WindowLeft, Console.WindowTop);
+                this.displayMenu();
+                Console.SetCursorPosition(leftPosition, topPosition);
+
                 option = this.callAction();
-            } while (option != 0) ;
+            } while (option != 0);
         }
     }
 }

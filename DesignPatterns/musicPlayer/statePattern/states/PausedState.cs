@@ -7,73 +7,71 @@ using DesignPatterns.musicPlayer.statePattern.model;
 
 namespace DesignPatterns.musicPlayer.statePattern.states
 {
-    class PausedState : IState
+    class PausedState : AbstractState
     {
-        private MusicPlayer musicPlayer;
-
-        public PausedState(MusicPlayer musicPlayer)
+        public PausedState(MusicPlayer musicPlayer) : base(musicPlayer)
         {
-            this.musicPlayer = musicPlayer;
         }
 
-        public void turnOn()
-        {
-            Console.WriteLine("Device is already turned on!");
-        }
-
-        public void turnOff()
-        {
-            Console.WriteLine("Device is shutting down...");
-            musicPlayer.stopTimerAndSound();
-            Thread.Sleep(2000);
-            Console.WriteLine("Device turned off.");
-            musicPlayer.CurrentState = musicPlayer.turnedOffState;
-        }
-
-        public void play()
+        public override void play()
         {
             Song song = musicPlayer.Songs[musicPlayer.CurrentSongIndex];
             Console.WriteLine(song.Artist + " - " + song.Title + " is resuming from " + musicPlayer.PausedAt + " seconds ...");
             musicPlayer.MediaPlayer.Play();
             musicPlayer.Timer.Enabled = true;
             musicPlayer.CurrentState = musicPlayer.playingState;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("STATE CHANGED : PAUSED_STATE ---> PLAYING_STATE");
+            Console.ResetColor();
         }
 
-        public void pause()
+        public override void pause()
         {
             Console.WriteLine("Song is already paused");
         }
 
-        public void stop()
+        public override void stop()
         {
             musicPlayer.stopTimerAndSound();
             Console.WriteLine("Song stopped. Device is now on stand by...");
             musicPlayer.CurrentState = musicPlayer.standbyState;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("STATE CHANGED : PAUSED_STATE ---> STANDBY_STATE");
+            Console.ResetColor();
         }
 
-        public void lockUnlock()
+        public override void lockUnlock()
         {
             Console.WriteLine("Device locked...");
             musicPlayer.stopTimerAndSound();
             musicPlayer.CurrentState = musicPlayer.lockedState;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("STATE CHANGED : PAUSED_STATE ---> LOCKED_STATE");
+            Console.ResetColor();
         }
 
-        public void next()
+        public override void next()
         {
             musicPlayer.setNextSong();
             musicPlayer.stopTimerAndSound();
             Song song = musicPlayer.Songs[musicPlayer.CurrentSongIndex];
             Console.WriteLine("Current song on stand by: " + song.Artist + " - " + song.Title);
             musicPlayer.CurrentState = musicPlayer.standbyState;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("STATE CHANGED : PAUSED_STATE ---> STANDBY_STATE");
+            Console.ResetColor();
         }
 
-        public void previous()
+        public override void previous()
         {
             musicPlayer.setPreviousSong();
             musicPlayer.stopTimerAndSound();
             Song song = musicPlayer.Songs[musicPlayer.CurrentSongIndex];
             Console.WriteLine("Current song on stand by: " + song.Artist + " - " + song.Title);
             musicPlayer.CurrentState = musicPlayer.standbyState;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("STATE CHANGED : PAUSED_STATE ---> STANDBY_STATE");
+            Console.ResetColor();
         }
     }
 }

@@ -7,54 +7,55 @@ using DesignPatterns.musicPlayer.statePattern.model;
 
 namespace DesignPatterns.musicPlayer.statePattern.states
 {
-    class TurnedOffState : IState
+    class TurnedOffState : AbstractState
     {
-        private MusicPlayer musicPlayer;
 
-        public TurnedOffState(MusicPlayer musicPlayer)
+        public TurnedOffState(MusicPlayer musicPlayer) : base(musicPlayer)
         {
-            this.musicPlayer = musicPlayer;
         }
 
-        public void turnOn()
+        public override void turnOn()
         {
             Console.WriteLine("Device is turning on....");
             Thread.Sleep(2000);
             Console.WriteLine("Device turned on...");
             musicPlayer.CurrentState = musicPlayer.standbyState;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("STATE CHANGED : TURNED_OFF_STATE ---> STANDBY_STATE");
+            Console.ResetColor();
         }
 
-        public void turnOff()
+        public override void turnOff()
         {
             
         }
 
-        public void play()
+        public override void play()
         {
             
         }
 
-        public void pause()
+        public override void pause()
         {
             
         }
 
-        public void stop()
+        public override void stop()
         {
             
         }
 
-        public void lockUnlock()
+        public override void lockUnlock()
         {
             
         }
 
-        public void next()
+        public override void next()
         {
             
         }
 
-        public void previous()
+        public override void previous()
         {
             
         }
