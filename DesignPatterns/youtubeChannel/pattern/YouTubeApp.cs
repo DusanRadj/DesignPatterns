@@ -9,12 +9,26 @@ namespace DesignPatterns.youtubeChannel.observerPattern
     class YouTubeApp
     {
         private Dictionary<String, YouTubeChannel> channels;
-        private Dictionary<String, GoogleAccount> googleAccounts;
-        
-        public YouTubeApp()
+        public Dictionary<String, YouTubeChannel> Channels
+        {
+            get { return channels; }
+            set { channels = value; }
+        }
+        private static YouTubeApp instance;
+
+        private YouTubeApp()
         {
             this.channels = new Dictionary<String, YouTubeChannel>();
-            this.googleAccounts = new Dictionary<String, GoogleAccount>();
+        }
+
+        public static YouTubeApp getInstance()
+        {
+            if (instance == null)
+            {
+                instance = new YouTubeApp();
+            }
+
+            return instance;
         }
 
         public void createYouTubeChannel()
@@ -23,27 +37,12 @@ namespace DesignPatterns.youtubeChannel.observerPattern
             String name = Console.ReadLine();
             try
             {
-                this.channels.Add(name, new YouTubeChannel(name));
+                channels.Add(name, new YouTubeChannel(name));
             }
             catch (ArgumentException)
             {
                 Console.WriteLine("Channel with that name already exists!");
             }
-        }
-
-        public void createGoogleAccount()
-        {
-            Console.WriteLine("Enter username for account: ");
-            String username = Console.ReadLine();
-            try
-            {
-                this.googleAccounts.Add(username, new GoogleAccount(username));
-            }
-            catch (ArgumentException)
-            {
-                Console.WriteLine("Google account with that name already exists!");
-            }
-            
         }
 
         public void subscribeChannel()
@@ -55,10 +54,10 @@ namespace DesignPatterns.youtubeChannel.observerPattern
 
             try
             {
-                YouTubeChannel subscriber = this.channels[yourName];
+                YouTubeChannel subscriber = channels[yourName];
                 try
                 {
-                    YouTubeChannel channel = this.channels[channelName];
+                    YouTubeChannel channel = channels[channelName];
                     subscriber.subscribe(channel);
                 }
                 catch (KeyNotFoundException)
@@ -73,33 +72,7 @@ namespace DesignPatterns.youtubeChannel.observerPattern
             }
         }
 
-        public void subscribeAccount()
-        {
-            Console.WriteLine("Enter your google account username: ");
-            String username = Console.ReadLine();
-            Console.WriteLine("Enter youtube channel to subscribe: ");
-            String channelName = Console.ReadLine();
-
-            try
-            {
-                GoogleAccount googleAccount = this.googleAccounts[username];
-                try
-                {
-                    YouTubeChannel channel = this.channels[channelName];
-                    googleAccount.subscribe(channel);
-                }
-                catch (KeyNotFoundException)
-                {
-                    Console.WriteLine("Youtube channel name you want to subscribe does not exist!");
-                }
-
-            }
-            catch (KeyNotFoundException)
-            {
-                Console.WriteLine("Your google account name is incorrect!");
-            }
-        }
-
+        
         public void unsubscribeChannel()
         {
             Console.WriteLine("Enter your youtube channel name: ");
@@ -109,10 +82,10 @@ namespace DesignPatterns.youtubeChannel.observerPattern
 
             try
             {
-                YouTubeChannel subscriber = this.channels[yourName];
+                YouTubeChannel subscriber = channels[yourName];
                 try
                 {
-                    YouTubeChannel channel = this.channels[channelName];
+                    YouTubeChannel channel = channels[channelName];
                     subscriber.unsubscribe(channel);
                 }
                 catch (KeyNotFoundException)
@@ -127,40 +100,14 @@ namespace DesignPatterns.youtubeChannel.observerPattern
             }
         }
 
-        public void unsubscribeAccount()
-        {
-            Console.WriteLine("Enter your google account username: ");
-            String username = Console.ReadLine();
-            Console.WriteLine("Enter youtube channel to unsubscribe: ");
-            String channelName = Console.ReadLine();
-
-            try
-            {
-                GoogleAccount googleAccount = this.googleAccounts[username];
-                try
-                {
-                    YouTubeChannel channel = this.channels[channelName];
-                    googleAccount.unsubscribe(channel);
-                }
-                catch (KeyNotFoundException)
-                {
-                    Console.WriteLine("Youtube channel name you want to unsubscribe does not exist!");
-                }
-
-            }
-            catch (KeyNotFoundException)
-            {
-                Console.WriteLine("Your google account name is incorrect!");
-            }
-        }
-
+        
         public void createNewVideo()
         {
             Console.WriteLine("Enter youtube channel: ");
             String channelName = Console.ReadLine();
             try
             {
-                YouTubeChannel channel = this.channels[channelName];
+                YouTubeChannel channel = channels[channelName];
                 channel.createNewVideo();
             }
             catch (KeyNotFoundException)
@@ -169,15 +116,11 @@ namespace DesignPatterns.youtubeChannel.observerPattern
             }
         }
 
-        public void displayChannelsAndAccounts()
+        public void displayChannels()
         {
             foreach (KeyValuePair<String, YouTubeChannel> channel in channels)
             {
                 Console.WriteLine(channel.Value.ToString());
-            }
-            foreach (KeyValuePair<String, GoogleAccount> account in googleAccounts)
-            {
-                Console.WriteLine(account.Value.ToString());
             }
         }
 
@@ -188,7 +131,7 @@ namespace DesignPatterns.youtubeChannel.observerPattern
 
             try
             {
-                YouTubeChannel channel = this.channels[channelName];
+                YouTubeChannel channel = channels[channelName];
                 channel.displayNotifications();
             }
             catch (KeyNotFoundException)
@@ -197,22 +140,7 @@ namespace DesignPatterns.youtubeChannel.observerPattern
             }
         }
 
-        public void viewGoogleAccountMails()
-        {
-            Console.WriteLine("Enter google account username: ");
-            String accountName = Console.ReadLine();
-
-            try
-            {
-                GoogleAccount googleAccount = this.googleAccounts[accountName];
-                googleAccount.displayAllMails();
-            }
-            catch (KeyNotFoundException)
-            {
-                Console.WriteLine("Google account name does not exist!");
-            }
-        }
-
+        
         public void clearYouTubeChannelNotifications()
         {
             Console.WriteLine("Enter youtube channel name: ");
@@ -220,8 +148,38 @@ namespace DesignPatterns.youtubeChannel.observerPattern
 
             try
             {
-                YouTubeChannel channel = this.channels[channelName];
+                YouTubeChannel channel = channels[channelName];
                 channel.clearNotifications();
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Youtube channel name does not exist!");
+            }
+        }
+
+        public void createNewPlaylist()
+        {
+            Console.WriteLine("Enter youtube channel: ");
+            String channelName = Console.ReadLine();
+            try
+            {
+                YouTubeChannel channel = channels[channelName];
+                channel.createPlaylist();
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Youtube channel name does not exist!");
+            }
+        }
+
+        public void addVideoToPlaylist()
+        {
+            Console.WriteLine("Enter youtube channel: ");
+            String channelName = Console.ReadLine();
+            try
+            {
+                YouTubeChannel channel = channels[channelName];
+                channel.addVideoToPlaylist();
             }
             catch (KeyNotFoundException)
             {
@@ -234,16 +192,14 @@ namespace DesignPatterns.youtubeChannel.observerPattern
             Console.WriteLine("---------------------------------------------------------");
             Console.WriteLine("Options:                                                 ");
             Console.WriteLine("1. Create YouTube channel                                ");
-            Console.WriteLine("2. Create Google account                                 ");
-            Console.WriteLine("3. Create video for youtube channel                      ");
-            Console.WriteLine("4. Display all channels and google accounts              ");
-            Console.WriteLine("5. Subscribe channel                                     ");
-            Console.WriteLine("6. Unsubscribe channel                                   ");
-            Console.WriteLine("7. Subscribe google account                              ");
-            Console.WriteLine("8. Unsubscribe google account                            ");
-            Console.WriteLine("9. View youtube channel notifications                    ");
-            Console.WriteLine("10. Clear youtube channel notifications                  ");
-            Console.WriteLine("11. View google account emails                           ");
+            Console.WriteLine("2. Create video for youtube channel                      ");
+            Console.WriteLine("3. Display all channels                                  ");
+            Console.WriteLine("4. Subscribe channel                                     ");
+            Console.WriteLine("5. Unsubscribe channel                                   ");
+            Console.WriteLine("6. View youtube channel notifications                    ");
+            Console.WriteLine("7. Clear youtube channel notifications                  ");
+            Console.WriteLine("8. Create new playlist                                  ");
+            Console.WriteLine("9. Add video to playlist                                ");
             Console.WriteLine("0. Exit                                                  ");
             Console.WriteLine("---------------------------------------------------------");
         }
@@ -266,34 +222,28 @@ namespace DesignPatterns.youtubeChannel.observerPattern
                     this.createYouTubeChannel();
                     break;
                 case 2:
-                    this.createGoogleAccount();
-                    break;
-                case 3:
                     this.createNewVideo();
                     break;
-                case 4:
-                    this.displayChannelsAndAccounts();
+                case 3:
+                    this.displayChannels();
                     break;
-                case 5:
+                case 4:
                     this.subscribeChannel();
                     break;
-                case 6:
+                case 5:
                     this.unsubscribeChannel();
                     break;
-                case 7:
-                    this.subscribeAccount();
-                    break;
-                case 8:
-                    this.unsubscribeAccount();
-                    break;
-                case 9:
+                case 6:
                     this.viewYouTubeChannelNotifications();
                     break;
-                case 10:
+                case 7:
                     this.clearYouTubeChannelNotifications();
                     break;
-                case 11:
-                    this.viewGoogleAccountMails();
+                case 8:
+                    this.createNewPlaylist();
+                    break;
+                case 9:
+                    this.addVideoToPlaylist();
                     break;
                 case 0:
                     Console.WriteLine("Exiting from music player app...");

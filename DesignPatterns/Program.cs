@@ -13,24 +13,22 @@ namespace DesignPatterns
         {
             while (true)
             {
-                Console.WriteLine("Choose example to run: ");
-                Console.WriteLine("1. Music player (State Pattern)");
-                Console.WriteLine("2. YouTube (Observer Pattern)");
+                Console.WriteLine("Choose way to run: ");
+                Console.WriteLine("1. Pattern");
+                Console.WriteLine("2. Without Pattern");
                 String option = Console.ReadLine();
 
                 Console.Clear();
 
                 if (option == "1")
                 {
-                    //MusicPlayerApp app = new MusicPlayerApp();
-                    DesignPatterns.musicPlayer.statePattern.MusicPlayerApp app = new musicPlayer.statePattern.MusicPlayerApp();
-                    app.startApp();
+                    PatternApp app = new PatternApp();
+                    app.menu();
                 }
                 else
                 {
-                    //YouTubeApp app = new YouTubeApp();
-                    DesignPatterns.youtubeChannel.withoutPattern.YouTubeApp app = new youtubeChannel.withoutPattern.YouTubeApp();
-                    app.startApp();
+                    WithoutPatternApp app = new WithoutPatternApp();
+                    app.menu();
                 }
             }
             
@@ -41,8 +39,7 @@ namespace DesignPatterns
 
         static void Main(string[] args)
         {
-            Menu();
-            
+            Menu();   
         }
     }
 }

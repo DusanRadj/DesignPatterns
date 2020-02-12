@@ -43,36 +43,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="musicPlayer\statePattern\model\MusicPlayer.cs" />
+    <Compile Include="googleAccount\pattern\GoogleAccountApp.cs" />
+    <Compile Include="googleAccount\withoutPattern\GoogleAccountApp.cs" />
+    <Compile Include="musicPlayer\pattern\MusicPlayer.cs" />
     <Compile Include="musicPlayer\common\Song.cs" />
-    <Compile Include="musicPlayer\statePattern\MusicPlayerApp.cs" />
-    <Compile Include="musicPlayer\statePattern\states\AbstractState.cs" />
-    <Compile Include="musicPlayer\statePattern\states\LockedState.cs" />
-    <Compile Include="musicPlayer\statePattern\states\PausedState.cs" />
-    <Compile Include="musicPlayer\statePattern\states\PlayingState.cs" />
-    <Compile Include="musicPlayer\statePattern\states\StandByState.cs" />
-    <Compile Include="musicPlayer\statePattern\states\TurnedOffState.cs" />
+    <Compile Include="musicPlayer\pattern\MusicPlayerApp.cs" />
+    <Compile Include="musicPlayer\pattern\states\AbstractState.cs" />
+    <Compile Include="musicPlayer\pattern\states\LockedState.cs" />
+    <Compile Include="musicPlayer\pattern\states\PausedState.cs" />
+    <Compile Include="musicPlayer\pattern\states\PlayingState.cs" />
+    <Compile Include="musicPlayer\pattern\states\StandByState.cs" />
+    <Compile Include="musicPlayer\pattern\states\TurnedOffState.cs" />
     <Compile Include="musicPlayer\withoutPattern\MusicPlayer.cs" />
     <Compile Include="musicPlayer\withoutPattern\MusicPlayerApp.cs" />
-    <Compile Include="musicPlayer\withoutPattern\Song.cs" />
+    <Compile Include="PatternApp.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="youtubeChannel\observerPattern\interfaces\ISubscribe.cs" />
-    <Compile Include="youtubeChannel\observerPattern\model\GoogleAccount.cs" />
-    <Compile Include="youtubeChannel\common\MyMail.cs" />
+    <Compile Include="WithoutPatternApp.cs" />
+    <Compile Include="youtubeChannel\pattern\ISubscribe.cs" />
+    <Compile Include="googleAccount\pattern\GoogleAccount.cs" />
+    <Compile Include="googleAccount\common\MyMail.cs" />
     <Compile Include="youtubeChannel\common\Notification.cs" />
-    <Compile Include="youtubeChannel\observerPattern\interfaces\IObservable.cs" />
-    <Compile Include="youtubeChannel\observerPattern\interfaces\IObserver.cs" />
-    <Compile Include="youtubeChannel\observerPattern\model\YouTubeChannel.cs" />
+    <Compile Include="youtubeChannel\pattern\IObservable.cs" />
+    <Compile Include="youtubeChannel\pattern\IObserver.cs" />
+    <Compile Include="youtubeChannel\pattern\Playlist.cs" />
+    <Compile Include="youtubeChannel\pattern\YouTubeChannel.cs" />
     <Compile Include="youtubeChannel\common\YouTubeVideo.cs" />
-    <Compile Include="youtubeChannel\observerPattern\YouTubeApp.cs" />
-    <Compile Include="youtubeChannel\withoutPattern\GoogleAccount.cs" />
+    <Compile Include="youtubeChannel\pattern\YouTubeApp.cs" />
+    <Compile Include="googleAccount\withoutPattern\GoogleAccount.cs" />
     <Compile Include="youtubeChannel\withoutPattern\ISubscribe.cs" />
-    <Compile Include="youtubeChannel\withoutPattern\MyMail.cs" />
-    <Compile Include="youtubeChannel\withoutPattern\Notification.cs" />
     <Compile Include="youtubeChannel\withoutPattern\YouTubeApp.cs" />
     <Compile Include="youtubeChannel\withoutPattern\YouTubeChannel.cs" />
-    <Compile Include="youtubeChannel\withoutPattern\YouTubeVideo.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="MediaPlayer">

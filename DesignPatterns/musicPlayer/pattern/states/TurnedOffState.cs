@@ -26,13 +26,11 @@ namespace DesignPatterns.musicPlayer.statePattern.states
         }
 
         public override void turnOff()
-        {
-            
+        {    
         }
 
         public override void play()
-        {
-            
+        {   
         }
 
         public override void pause()
@@ -41,23 +39,19 @@ namespace DesignPatterns.musicPlayer.statePattern.states
         }
 
         public override void stop()
-        {
-            
+        {   
         }
 
         public override void lockUnlock()
-        {
-            
+        {    
         }
 
         public override void next()
-        {
-            
+        {   
         }
 
         public override void previous()
         {
-            
         }
     }
 }

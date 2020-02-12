@@ -9,8 +9,9 @@ namespace DesignPatterns.musicPlayer.statePattern
     class MusicPlayerApp
     {
         private MusicPlayer musicPlayer;
+        private static MusicPlayerApp instance;
 
-        public MusicPlayerApp()
+        private MusicPlayerApp()
         {
             this.musicPlayer = new MusicPlayer();
             this.initializeMusicPlayerWithSongs();
@@ -21,6 +22,16 @@ namespace DesignPatterns.musicPlayer.statePattern
             this.musicPlayer.Songs.Add(new Song("River", "Eminem Feat. Ed Sheeran", 230,"River.mp3"));
             this.musicPlayer.Songs.Add(new Song("Paint it black", "Roling Stones", 240, "Paint It, Black.mp3"));
             this.musicPlayer.Songs.Add(new Song("You'll never walk alone", "The Beatles", 210, "Ynwa.mp3"));
+        }
+
+        public static MusicPlayerApp getInstance()
+        {
+            if (instance == null)
+            {
+                instance = new MusicPlayerApp();
+            }
+
+            return instance;
         }
 
         private void displayMenu()
