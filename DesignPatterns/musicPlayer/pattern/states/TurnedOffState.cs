@@ -10,9 +10,7 @@ namespace DesignPatterns.musicPlayer.statePattern.states
     class TurnedOffState : AbstractState
     {
 
-        public TurnedOffState(MusicPlayer musicPlayer) : base(musicPlayer)
-        {
-        }
+        public TurnedOffState(MusicPlayer musicPlayer) : base(musicPlayer){ }
 
         public override void turnOn()
         {
@@ -25,33 +23,19 @@ namespace DesignPatterns.musicPlayer.statePattern.states
             Console.ResetColor();
         }
 
-        public override void turnOff()
-        {    
-        }
+        public override void turnOff(){ }
 
-        public override void play()
-        {   
-        }
+        public override void play(){ }
 
-        public override void pause()
-        {
-            
-        }
+        public override void pause(){ }
 
-        public override void stop()
-        {   
-        }
+        public override void stop(){ }
 
-        public override void lockUnlock()
-        {    
-        }
+        public override void lockUnlock(){ }
 
-        public override void next()
-        {   
-        }
+        public override void next(){ }
 
-        public override void previous()
-        {
-        }
+        public override void previous(){ }
+    
     }
 }

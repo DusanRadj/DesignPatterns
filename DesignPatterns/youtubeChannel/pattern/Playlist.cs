@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DesignPatterns.youtubeChannel.observerPattern.model;
+using DesignPatterns.youtubeChannel.pattern.interfaces;
 
 namespace DesignPatterns.youtubeChannel.observerPattern.model
 {
@@ -16,10 +18,19 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
 
         private Dictionary<String, YouTubeVideo> videos;
 
-        public Playlist(String name)
+        private IPlayAlghoritm playAlghoritm;
+
+        internal IPlayAlghoritm PlayAlghoritm
+        {
+            get { return playAlghoritm; }
+            set { playAlghoritm = value; }
+        }
+
+        public Playlist(String name, IPlayAlghoritm playAlghoritm)
         {
             this.name = name;
             this.videos = new Dictionary<String, YouTubeVideo>();
+            this.playAlghoritm = playAlghoritm;
         }
 
         public void addVideoToPlaylist(YouTubeVideo video)
@@ -39,6 +50,27 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
             catch (KeyNotFoundException)
             {
                 Console.WriteLine("Video with given title is not in the playlist!");
+            }
+        }
+
+        public void displayPlaylist()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Playlist: " + this.name);
+            Console.WriteLine("Videos in this playlist: ");
+            foreach (KeyValuePair<String, YouTubeVideo> pair in this.videos)
+            {
+                pair.Value.displayVideo();
+            }
+            Console.WriteLine();
+
+        }
+
+        public void play()
+        {
+            foreach (KeyValuePair<String,YouTubeVideo> video in videos)
+            {
+                playAlghoritm.play(video.Value);
             }
         }
 

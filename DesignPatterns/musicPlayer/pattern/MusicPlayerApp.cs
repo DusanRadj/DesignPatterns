@@ -19,9 +19,9 @@ namespace DesignPatterns.musicPlayer.statePattern
 
         private void initializeMusicPlayerWithSongs()
         {
-            this.musicPlayer.Songs.Add(new Song("River", "Eminem Feat. Ed Sheeran", 230,"River.mp3"));
-            this.musicPlayer.Songs.Add(new Song("Paint it black", "Roling Stones", 240, "Paint It, Black.mp3"));
-            this.musicPlayer.Songs.Add(new Song("You'll never walk alone", "The Beatles", 210, "Ynwa.mp3"));
+            this.musicPlayer.Songs.Add(new Song("River", "Eminem Feat. Ed Sheeran", 216, "River.mp3"));
+            this.musicPlayer.Songs.Add(new Song("Paint it black", "Roling Stones", 221, "Paint It, Black.mp3"));
+            this.musicPlayer.Songs.Add(new Song("You'll never walk alone", "The Beatles", 163, "Ynwa.mp3"));
         }
 
         public static MusicPlayerApp getInstance()
@@ -62,7 +62,6 @@ namespace DesignPatterns.musicPlayer.statePattern
                 Console.Write("Command: ");
             }
 
-            //Console.WriteLine("----------------------------");
             switch (option)
             {
                 case 1:

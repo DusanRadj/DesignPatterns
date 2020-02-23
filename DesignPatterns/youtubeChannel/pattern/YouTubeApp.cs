@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DesignPatterns.youtubeChannel.observerPattern.model;
+using DesignPatterns.youtubeChannel.pattern;
 
 namespace DesignPatterns.youtubeChannel.observerPattern
 {
@@ -14,11 +15,22 @@ namespace DesignPatterns.youtubeChannel.observerPattern
             get { return channels; }
             set { channels = value; }
         }
+
+        private List<YouTubeVideo> advertisements;
+
+        internal List<YouTubeVideo> Advertisements
+        {
+            get { return advertisements; }
+            set { advertisements = value; }
+        }
+
         private static YouTubeApp instance;
 
         private YouTubeApp()
         {
             this.channels = new Dictionary<String, YouTubeChannel>();
+            this.advertisements = new List<YouTubeVideo>();
+            this.advertisements.Add(new YouTubeVideo("add", "Youtube advertisement description", "www.youtube,com", 4));
         }
 
         public static YouTubeApp getInstance()
@@ -35,9 +47,20 @@ namespace DesignPatterns.youtubeChannel.observerPattern
         {
             Console.WriteLine("Enter name for the channel: ");
             String name = Console.ReadLine();
+            Console.WriteLine("Enter type of channel (basic/premium)");
+            String type = Console.ReadLine();
+
             try
             {
-                channels.Add(name, new YouTubeChannel(name));
+                if (type.Equals("basic"))
+                {
+                    channels.Add(name, new BasicYouTubeChannel(name));//factory pattern
+                }
+                else
+                {
+                    channels.Add(name, new PremiumYouTubeChannel(name));
+                }
+                
             }
             catch (ArgumentException)
             {
@@ -172,6 +195,21 @@ namespace DesignPatterns.youtubeChannel.observerPattern
             }
         }
 
+        public void playPlaylist()
+        {
+            Console.WriteLine("Enter youtube channel: ");
+            String channelName = Console.ReadLine();
+            try
+            {
+                YouTubeChannel channel = channels[channelName];
+                channel.playPlaylist();
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Youtube channel name does not exist!");
+            }
+        }
+
         public void addVideoToPlaylist()
         {
             Console.WriteLine("Enter youtube channel: ");
@@ -180,6 +218,71 @@ namespace DesignPatterns.youtubeChannel.observerPattern
             {
                 YouTubeChannel channel = channels[channelName];
                 channel.addVideoToPlaylist();
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Youtube channel name does not exist!");
+            }
+        }
+
+        public void displayPlaylists()
+        {
+            Console.WriteLine("Enter youtube channel: ");
+            String channelName = Console.ReadLine();
+            try
+            {
+                YouTubeChannel channel = channels[channelName];
+                channel.displayPlaylists();
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Youtube channel name does not exist!");
+            }
+        }
+
+        public void playVideo()
+        {
+            Console.WriteLine("Enter youtube channel: ");
+            String channelName = Console.ReadLine();
+            try
+            {
+                YouTubeChannel channel = channels[channelName];
+                channel.playVideo();
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Youtube channel name does not exist!");
+            }
+        }
+
+        public void switchTypeOfChannel()
+        {
+            Console.WriteLine("Enter youtube channel: ");
+            String channelName = Console.ReadLine();
+            try
+            {
+                YouTubeChannel channel = channels[channelName];
+
+                if (channel.PlayAlghoritm.GetType() == typeof(NoAdvertisingPlaying))
+                {
+                    channel.PlayAlghoritm = new AdvertisingPlaying();
+                    foreach (KeyValuePair<String, Playlist> playlist in channel.Playlists)
+                    {
+                        playlist.Value.PlayAlghoritm = new AdvertisingPlaying();
+                    }
+
+                    Console.WriteLine("YouTube channel" + channelName + " has switch from no advertising, to advertising type");
+                }
+                else
+                {
+                    channel.PlayAlghoritm = new NoAdvertisingPlaying();
+                    foreach (KeyValuePair<String, Playlist> playlist in channel.Playlists)
+                    {
+                        playlist.Value.PlayAlghoritm = new NoAdvertisingPlaying();
+                    }
+
+                    Console.WriteLine("YouTube channel" + channelName + " has switch from advertising, to no advertising type");
+                }
             }
             catch (KeyNotFoundException)
             {
@@ -200,6 +303,10 @@ namespace DesignPatterns.youtubeChannel.observerPattern
             Console.WriteLine("7. Clear youtube channel notifications                  ");
             Console.WriteLine("8. Create new playlist                                  ");
             Console.WriteLine("9. Add video to playlist                                ");
+            Console.WriteLine("10. Display all playlists                                ");
+            Console.WriteLine("11. Play video                                ");
+            Console.WriteLine("12. Play playlist                                ");
+            Console.WriteLine("13. Switch type of channel (add/noAdd)               ");
             Console.WriteLine("0. Exit                                                  ");
             Console.WriteLine("---------------------------------------------------------");
         }
@@ -244,6 +351,18 @@ namespace DesignPatterns.youtubeChannel.observerPattern
                     break;
                 case 9:
                     this.addVideoToPlaylist();
+                    break;
+                case 10:
+                    this.displayPlaylists();
+                    break;
+                case 11:
+                    this.playVideo();
+                    break;
+                case 12:
+                    this.playPlaylist();
+                    break;
+                case 13:
+                    this.switchTypeOfChannel();
                     break;
                 case 0:
                     Console.WriteLine("Exiting from music player app...");

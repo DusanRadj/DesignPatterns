@@ -3,28 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DesignPatterns.youtubeChannel.observerPattern.interfaces;
+using DesignPatterns.googleAccount.pattern;
 
 namespace DesignPatterns.youtubeChannel.observerPattern.model
 {
     class GoogleAccount : IObserver, ISubscribe
     {
         private Dictionary<String,YouTubeChannel> subscribedTo;
-        private List<MyMail> emails;
+        private List<MyMail> inbox;
+        private List<MyMail> outbox;
         private String gMailAddress;
-        
         private String username;
-        public String Username
-        {
-            get { return username; }
-            set { username = value; }
-        }
-
+        
         public GoogleAccount(String username)
         {
             this.subscribedTo = new Dictionary<String, YouTubeChannel>();
-            this.emails = new List<MyMail>();
+            this.inbox = new List<MyMail>();
+            this.outbox = new List<MyMail>();
             this.username = username;
             this.gMailAddress = username + "@gmail.com";
+        }
+
+        public void sendMail(GoogleAccount reciever)
+        {
+            Console.WriteLine("Enter subject: ");
+            String subject = Console.ReadLine();
+            Console.WriteLine("Enter text: ");
+            String text = Console.ReadLine();
+            MyMail newMail = new MyMail(this.gMailAddress, reciever.GMailAddress, subject, text);
+            this.Outbox.Add(newMail);
+            reciever.Inbox.Add(newMail);
         }
 
         public void update(Notification notification)
@@ -34,7 +42,7 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
             text += "Go to " + notification.Link + " to check it out!";
             MyMail newMail = new MyMail("www.youtube.com", this.gMailAddress, subject, text);
             Console.WriteLine(this.username + ", you have recieved a new mail: " + subject); 
-            this.emails.Add(newMail);
+            this.inbox.Add(newMail);
         }
 
         public void subscribe(YouTubeChannel toSubscribe)
@@ -58,10 +66,23 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
 
         public void displayAllMails()
         {
-            foreach (MyMail mail in emails)
+            Console.WriteLine("Inbox:");
+            Console.WriteLine();
+
+            foreach (MyMail mail in inbox)
             {
                 Console.WriteLine(mail.ToString());
             }
+            Console.WriteLine();
+
+            Console.WriteLine("Outbox:");
+            Console.WriteLine();
+
+            foreach (MyMail mail in outbox)
+            {
+                Console.WriteLine(mail.ToString());
+            }
+            Console.WriteLine();
         }
 
         public override string ToString()
@@ -86,5 +107,30 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
 
             return retVal;
         }
+
+        #region properties
+
+        public String Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
+        public String GMailAddress
+        {
+            get { return gMailAddress; }
+            set { gMailAddress = value; }
+        }
+        internal List<MyMail> Outbox
+        {
+            get { return outbox; }
+            set { outbox = value; }
+        }
+        internal List<MyMail> Inbox
+        {
+            get { return inbox; }
+            set { inbox = value; }
+        }
+
+        #endregion
     }
 }

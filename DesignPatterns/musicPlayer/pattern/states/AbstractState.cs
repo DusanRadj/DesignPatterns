@@ -34,11 +34,12 @@ namespace DesignPatterns.musicPlayer.statePattern.states
             int index = currentState.IndexOf("STATE");
             String stateName = currentState.Substring(0, index);
             String formattedCurrentState = stateName + "_STATE";
+
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("STATE CHANGED : {0} ---> TURNED_OFF_STATE",formattedCurrentState);
             Console.ResetColor();
+            
             musicPlayer.CurrentState = musicPlayer.turnedOffState;
-
         }
 
         public abstract void play();

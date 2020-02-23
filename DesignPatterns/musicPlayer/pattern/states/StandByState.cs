@@ -11,9 +11,7 @@ namespace DesignPatterns.musicPlayer.statePattern.states
 {
     class StandByState : AbstractState
     {
-        public StandByState(MusicPlayer musicPlayer) : base(musicPlayer)
-        {
-        }
+        public StandByState(MusicPlayer musicPlayer) : base(musicPlayer){ }
 
         public override void play()
         {

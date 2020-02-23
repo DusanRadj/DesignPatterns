@@ -35,5 +35,10 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
             this.channelName = channelName;
         }
 
+        public override string ToString()
+        {
+            return "Channel " + this.ChannelName + " you subscribed to, has uploaded a new video " + this.Title + " on link (" + this.Link + ")";
+        }
+
     }
 }

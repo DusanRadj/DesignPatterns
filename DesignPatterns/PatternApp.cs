@@ -5,6 +5,7 @@ using System.Text;
 using DesignPatterns.musicPlayer.statePattern;
 using DesignPatterns.googleAccount.pattern;
 using DesignPatterns.youtubeChannel.observerPattern;
+using DesignPatterns.pizzaOrder.pattern;
 
 namespace DesignPatterns
 {
@@ -13,12 +14,14 @@ namespace DesignPatterns
         private MusicPlayerApp musicPlayerApp;
         private GoogleAccountApp googleAccountApp;
         private YouTubeApp youTubeApp;
+        private PizzaOrderApp pizzaOrderApp;
 
         public PatternApp()
         {
             this.musicPlayerApp = MusicPlayerApp.getInstance();
             this.googleAccountApp = GoogleAccountApp.getInstance();
             this.youTubeApp = YouTubeApp.getInstance();
+            this.pizzaOrderApp = PizzaOrderApp.getInstance();
             
         }
 
@@ -32,6 +35,7 @@ namespace DesignPatterns
                 Console.WriteLine("1. Music player");
                 Console.WriteLine("2. YouTube");
                 Console.WriteLine("3. Google account");
+                Console.WriteLine("4. Pizza ordering");
                 String option = Console.ReadLine();
 
                 Console.Clear();
@@ -48,8 +52,13 @@ namespace DesignPatterns
                             this.youTubeApp.startApp();
                             break;
                         }
+                    case "3":
+                        {
+                            this.googleAccountApp.startApp();
+                            break;
+                        }
                     default:
-                        this.googleAccountApp.startApp();
+                        this.pizzaOrderApp.startApp();
                         break;
                 }
                 

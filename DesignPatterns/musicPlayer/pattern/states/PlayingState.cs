@@ -9,9 +9,7 @@ namespace DesignPatterns.musicPlayer.statePattern.states
 {
     class PlayingState : AbstractState
     {
-        public PlayingState(MusicPlayer musicPlayer) : base(musicPlayer)
-        {
-        }
+        public PlayingState(MusicPlayer musicPlayer) : base(musicPlayer) { }
 
         public override void play()
         {

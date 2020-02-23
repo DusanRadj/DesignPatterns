@@ -10,6 +10,12 @@ namespace DesignPatterns.googleAccount.pattern
     class GoogleAccountApp
     {
         private Dictionary<String, GoogleAccount> googleAccounts;
+        internal Dictionary<String, GoogleAccount> GoogleAccounts
+        {
+            get { return googleAccounts; }
+            set { googleAccounts = value; }
+        }
+        
         private static GoogleAccountApp instance;
 
         private GoogleAccountApp()
@@ -29,7 +35,7 @@ namespace DesignPatterns.googleAccount.pattern
 
         public void createGoogleAccount()
         {
-            Console.WriteLine("Enter username for account: ");
+            Console.Write("Enter username for account: ");
             String username = Console.ReadLine();
             try
             {
@@ -44,9 +50,9 @@ namespace DesignPatterns.googleAccount.pattern
 
         public void subscribeAccount(Dictionary<String,YouTubeChannel> channels)
         {
-            Console.WriteLine("Enter your google account username: ");
+            Console.Write("Enter your google account username: ");
             String username = Console.ReadLine();
-            Console.WriteLine("Enter youtube channel to subscribe: ");
+            Console.Write("Enter youtube channel to subscribe: ");
             String channelName = Console.ReadLine();
 
             try
@@ -72,9 +78,9 @@ namespace DesignPatterns.googleAccount.pattern
 
         public void unsubscribeAccount(Dictionary<String, YouTubeChannel> channels)
         {
-            Console.WriteLine("Enter your google account username: ");
+            Console.Write("Enter your google account username: ");
             String username = Console.ReadLine();
-            Console.WriteLine("Enter youtube channel to unsubscribe: ");
+            Console.Write("Enter youtube channel to unsubscribe: ");
             String channelName = Console.ReadLine();
 
             try
@@ -107,7 +113,7 @@ namespace DesignPatterns.googleAccount.pattern
 
         public void viewGoogleAccountMails()
         {
-            Console.WriteLine("Enter google account username: ");
+            Console.Write("Enter google account username: ");
             String accountName = Console.ReadLine();
 
             try
@@ -121,16 +127,36 @@ namespace DesignPatterns.googleAccount.pattern
             }
         }
 
+        public void sendMail()
+        {
+            Console.Write("Enter your google account username: ");
+            String senderName = Console.ReadLine();
+            Console.Write("Enter reciever google account username: ");
+            String recieverName = Console.ReadLine();
+
+            try
+            {
+                GoogleAccount sender = this.googleAccounts[senderName];
+                GoogleAccount reciever = this.googleAccounts[recieverName];
+                sender.sendMail(reciever);
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Google account names are invalid!");
+            }
+        }
+
 
         public void displayMenu()
         {
             Console.WriteLine("---------------------------------------------------------");
             Console.WriteLine("Options:                                                 ");
             Console.WriteLine("1. Create Google account                                 ");
-            Console.WriteLine("2. Display all              google accounts              ");
+            Console.WriteLine("2. Display all google accounts                           ");
             Console.WriteLine("3. Subscribe google account                              ");
             Console.WriteLine("4. Unsubscribe google account                            ");
             Console.WriteLine("5. View google account emails                            ");
+            Console.WriteLine("6. Send email                                            ");
             Console.WriteLine("0. Exit                                                  ");
             Console.WriteLine("---------------------------------------------------------");
         }
@@ -141,9 +167,9 @@ namespace DesignPatterns.googleAccount.pattern
             Console.Write("Command: ");
             while (!Int32.TryParse(Console.ReadLine(), out option))
             {
-                Console.WriteLine("----------------------------");
-                Console.WriteLine("Invalid input, please enter a valid option (from 0 to 8)!");
-                Console.WriteLine("----------------------------");
+                Console.WriteLine("---------------------------------------------------------");
+                Console.WriteLine("Invalid input, please enter a valid option (from 0 to 6)!");
+                Console.WriteLine("---------------------------------------------------------");
                 Console.Write("Command: ");
             }
 
@@ -164,15 +190,18 @@ namespace DesignPatterns.googleAccount.pattern
                 case 5:
                     this.viewGoogleAccountMails();
                     break;
+                case 6:
+                    this.sendMail();
+                    break;
                 case 0:
                     Console.WriteLine("Exiting from music player app...");
                     break;
                 default:
-                    Console.WriteLine("----------------------------");
-                    Console.WriteLine("Invalid input, please enter a valid option (from 0 to 8)!");
+                    Console.WriteLine("---------------------------------------------------------");
+                    Console.WriteLine("Invalid input, please enter a valid option (from 0 to 6)!");
                     break;
             }
-            Console.WriteLine("----------------------------");
+            Console.WriteLine("---------------------------------------------------------");
             return option;
         }
 

@@ -14,49 +14,15 @@ namespace DesignPatterns.musicPlayer.statePattern.model
         public AbstractState lockedState;
         public AbstractState playingState;
         public AbstractState pausedState;
-
         private AbstractState currentState;
-        public AbstractState CurrentState
-        {
-            get { return currentState; }
-            set { currentState = value; }
-        }
 
         private int currentSongIndex;
-        public int CurrentSongIndex
-        {
-            get { return currentSongIndex; }
-            set { currentSongIndex = value; }
-        }
-
         private int pausedAt;
-        public int PausedAt
-        {
-            get { return pausedAt; }
-            set { pausedAt = value; }
-        }
-
-        private List<Song> songs;
-        public List<Song> Songs
-        {
-            get { return songs; }
-            set { songs = value; }
-        }
 
         private MediaPlayer.MediaPlayer mediaPlayer;
-        public MediaPlayer.MediaPlayer MediaPlayer
-        {
-            get { return mediaPlayer; }
-            set { mediaPlayer = value; }
-        }
-
         private Timer timer;
-        public Timer Timer
-        {
-            get { return timer; }
-            set { timer = value; }
-        }
 
+        private List<Song> songs;
         
         public MusicPlayer()
         {
@@ -155,6 +121,8 @@ namespace DesignPatterns.musicPlayer.statePattern.model
             Console.SetCursorPosition(0, Console.CursorTop);
             Console.WriteLine(getTimeFormatedString());
             Console.SetCursorPosition(10, Console.CursorTop - 1);
+            if (this.pausedAt == this.songs[currentSongIndex].Length - 1)
+                this.currentState.next();
         }
 
         public String getTimeFormatedString()
@@ -183,5 +151,41 @@ namespace DesignPatterns.musicPlayer.statePattern.model
 
             return retVal;
         }
+
+
+        #region properties
+
+        public Timer Timer
+        {
+            get { return timer; }
+            set { timer = value; }
+        }
+        public MediaPlayer.MediaPlayer MediaPlayer
+        {
+            get { return mediaPlayer; }
+            set { mediaPlayer = value; }
+        }
+        public List<Song> Songs
+        {
+            get { return songs; }
+            set { songs = value; }
+        }
+        public int PausedAt
+        {
+            get { return pausedAt; }
+            set { pausedAt = value; }
+        }
+        public int CurrentSongIndex
+        {
+            get { return currentSongIndex; }
+            set { currentSongIndex = value; }
+        }
+        public AbstractState CurrentState
+        {
+            get { return currentState; }
+            set { currentState = value; }
+        }
+
+        #endregion
     }
 }

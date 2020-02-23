@@ -39,6 +39,8 @@ namespace DesignPatterns
 
         static void Main(string[] args)
         {
+            
+            
             Menu();   
         }
     }

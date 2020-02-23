@@ -10,10 +10,7 @@ namespace DesignPatterns.musicPlayer.statePattern.states
     class LockedState : AbstractState
     {
 
-        public LockedState(MusicPlayer musicPlayer) : base(musicPlayer)
-        {
-            
-        }
+        public LockedState(MusicPlayer musicPlayer) : base(musicPlayer){ }
 
         public override void play()
         {

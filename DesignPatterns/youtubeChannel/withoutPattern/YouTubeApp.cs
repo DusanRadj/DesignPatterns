@@ -9,11 +9,11 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
     class YouTubeApp
     {
         private static Dictionary<String, YouTubeChannel> channels = new Dictionary<String, YouTubeChannel>();
-
         public static Dictionary<String, YouTubeChannel> getYouTubeChannels()
         {
             return channels;
         }
+        
 
         public YouTubeApp()
         {

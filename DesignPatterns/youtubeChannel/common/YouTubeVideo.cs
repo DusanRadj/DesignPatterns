@@ -35,6 +35,7 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
             set { length = value; }
         }
 
+        
         public YouTubeVideo(String title, String description, String link, int length)
         {
             this.title = title;
@@ -42,6 +43,20 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
             this.link = link;
             this.length = length;
         }
+
+        public void displayVideo()
+        {
+            Console.WriteLine("Title: " + this.title + ", Description: " + this.description + ", Length (" + this.length + "), Link -> " + this.link + ")");
+        }
+
+        public void play()
+        {
+            String path = "D:\\" + title + ".mp4";
+            //ovde provera ako je lose zadat path da ne moze da se pusti poruka
+            System.Diagnostics.Process.Start(path);
+        }
+
+
 
 
     }

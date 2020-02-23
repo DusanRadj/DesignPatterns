@@ -2,38 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DesignPatterns.googleAccount.pattern;
 
 namespace DesignPatterns.youtubeChannel.observerPattern.model
 {
-    class MyMail
+    class MyMail 
     {
         private String from;
-        public String From
-        {
-            get { return from; }
-            set { from = value; }
-        }
-
         private String to;
-        public String To
-        {
-            get { return to; }
-            set { to = value; }
-        }
-
         private String subject;
-        public String Subject
-        {
-            get { return subject; }
-            set { subject = value; }
-        }
-
         private String text;
-        public String Text
-        {
-            get { return text; }
-            set { text = value; }
-        }
 
         public MyMail(String from, String to, String subject, String text)
         {
@@ -54,6 +32,32 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
 
             return retVal;
         }
+
+        #region properties
+
+        public String Text
+        {
+            get { return text; }
+            set { text = value; }
+        }
+        public String Subject
+        {
+            get { return subject; }
+            set { subject = value; }
+        }
+        public String To
+        {
+            get { return to; }
+            set { to = value; }
+        }
+        public String From
+        {
+            get { return from; }
+            set { from = value; }
+        }
+
+        #endregion
+
 
 
     }

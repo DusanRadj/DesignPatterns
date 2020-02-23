@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Globalization;
 using DesignPatterns.youtubeChannel.observerPattern.interfaces;
+using DesignPatterns.youtubeChannel.pattern.interfaces;
+using DesignPatterns.youtubeChannel.pattern;
 
 namespace DesignPatterns.youtubeChannel.observerPattern.model
 {
@@ -28,7 +30,22 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
         private Dictionary<String,YouTubeChannel> subscribedTo;
         private List<Notification> notifications;
 
-        private Dictionary<String,Playlist> playlists;
+        private Dictionary<String, Playlist> playlists;
+
+        internal Dictionary<String, Playlist> Playlists
+        {
+            get { return playlists; }
+            set { playlists = value; }
+        }
+
+        private IPlayAlghoritm playAlghoritm = new NoAdvertisingPlaying();
+
+        internal IPlayAlghoritm PlayAlghoritm
+        {
+            get { return playAlghoritm; }
+            set { playAlghoritm = value; }
+        }
+        
 
         public YouTubeChannel(String name)
         {
@@ -45,8 +62,24 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
         {
             Console.Write("Enter playlist name: ");
             String playlistName = Console.ReadLine();
-            Playlist playlist = new Playlist(playlistName);
+            Playlist playlist = new Playlist(playlistName,this.playAlghoritm);
             this.playlists.Add(playlistName,playlist);
+        }
+
+        public void playPlaylist()
+        {
+            Console.Write("Enter playlist name: ");
+            String playlistName = Console.ReadLine();
+
+            try
+            {
+                Playlist playlist = this.playlists[playlistName];
+                playlist.play();
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Playlist of given name does not exist!");
+            }
         }
 
         public void addVideoToPlaylist()
@@ -91,57 +124,13 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
             }
         }
 
-        public void registerObserver(IObserver observer)
+        public void displayPlaylists()
         {
-            this.subscribers.Add(observer);
-        }
-
-        public void removeObserver(IObserver observer)
-        {
-            this.subscribers.Remove(observer);
-        }
-
-        public void notifyObservers(Notification notification)
-        {
-            foreach (IObserver subscriber in subscribers)
+            foreach (KeyValuePair<String, Playlist> pair in this.playlists)
             {
-                subscriber.update(notification); 
+                pair.Value.displayPlaylist();
             }
-        }
-
-        public void subscribe(YouTubeChannel toSubscribe)
-        {
-            if (this == toSubscribe)
-            {
-                Console.WriteLine("You can not subscribe to your own channel!");
-                return;
-            }
-
-            try
-            {
-                this.subscribedTo.Add(toSubscribe.Name, toSubscribe);
-                toSubscribe.registerObserver(this);
-            }
-            catch (ArgumentException)
-            {
-                Console.WriteLine("You are already subscribed to this channel!");
-            }
-        }
-
-        public void unsubscribe(YouTubeChannel toUnsubscribe)
-        {
-            this.subscribedTo.Remove(toUnsubscribe.Name);
-            toUnsubscribe.removeObserver(this);
-        }
-
-        public void update(Notification notification)
-        {
-            this.notifications.Add(notification);
-
-            Console.WriteLine(this.name + ": Channel " + notification.ChannelName + " you subscribed to, has uploaded a new video "
-                + notification.Title + " on link (" + notification.Link + ")");
-
-        }
+        } 
 
         public void clearNotifications()
         {
@@ -152,8 +141,7 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
         {
             foreach (Notification notification in notifications)
             {
-                Console.WriteLine(this.name + ": Channel " + notification.ChannelName + " you subscribed to, has uploaded a new video "
-                + notification.Title + " on link (" + notification.Link + ")");
+                Console.WriteLine(this.name + ": " + notification.ToString());
             }
         }
 
@@ -176,6 +164,22 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
             Console.WriteLine("Channel " + this.name + " created video " + newVideo.Title + " ( " + newVideo.Length + " ) ");
             
             this.notifyObservers(new Notification(newVideo.Title, newVideo.Link, this.name));
+        }
+
+        public void playVideo()
+        {
+            Console.Write("Enter video title: ");
+            String videoTitle = Console.ReadLine();
+
+            try
+            {
+                YouTubeVideo video = this.videos[videoTitle];
+                this.playAlghoritm.play(video);
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("This channel do not have video with given title!");
+            }
         }
 
         private String createNewLink()
@@ -209,6 +213,62 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
 
             return retVal;
         }
-        
+
+
+        #region observerPattern methods
+
+        public void registerObserver(IObserver observer)
+        {
+            this.subscribers.Add(observer);
+        }
+
+        public void removeObserver(IObserver observer)
+        {
+            this.subscribers.Remove(observer);
+        }
+
+        public void notifyObservers(Notification notification)
+        {
+            foreach (IObserver subscriber in subscribers)
+            {
+                subscriber.update(notification);
+            }
+        }
+
+        public void subscribe(YouTubeChannel toSubscribe)
+        {
+            if (this == toSubscribe)
+            {
+                Console.WriteLine("You can not subscribe to your own channel!");
+                return;
+            }
+
+            try
+            {
+                this.subscribedTo.Add(toSubscribe.Name, toSubscribe);
+                toSubscribe.registerObserver(this);
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("You are already subscribed to this channel!");
+            }
+        }
+
+        public void unsubscribe(YouTubeChannel toUnsubscribe)
+        {
+            this.subscribedTo.Remove(toUnsubscribe.Name);
+            toUnsubscribe.removeObserver(this);
+        }
+
+        public void update(Notification notification)
+        {
+            this.notifications.Add(notification);
+
+            Console.WriteLine(this.name + ": " + notification.ToString());
+        }
+
+        #endregion
+
+
     }
 }
