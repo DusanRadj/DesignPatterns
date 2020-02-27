@@ -10,21 +10,8 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
     class Playlist
     {
         private String name;
-        public String Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
         private Dictionary<String, YouTubeVideo> videos;
-
         private IPlayAlghoritm playAlghoritm;
-
-        internal IPlayAlghoritm PlayAlghoritm
-        {
-            get { return playAlghoritm; }
-            set { playAlghoritm = value; }
-        }
 
         public Playlist(String name, IPlayAlghoritm playAlghoritm)
         {
@@ -33,12 +20,12 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
             this.playAlghoritm = playAlghoritm;
         }
 
-        public void addVideoToPlaylist(YouTubeVideo video)
+        public void addVideo(YouTubeVideo video)
         {
             this.videos.Add(video.Title,video);
         }
 
-        public void removeVideoFromPlaylist()
+        public void removeVideo()
         {
             Console.Write("Enter video title: ");
             String videoTitle = Console.ReadLine();
@@ -53,7 +40,7 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
             }
         }
 
-        public void displayPlaylist()
+        public void display()
         {
             Console.WriteLine();
             Console.WriteLine("Playlist: " + this.name);
@@ -73,6 +60,22 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
                 playAlghoritm.play(video.Value);
             }
         }
+
+        #region properties
+
+        internal IPlayAlghoritm PlayAlghoritm
+        {
+            get { return playAlghoritm; }
+            set { playAlghoritm = value; }
+        }
+
+        public String Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        #endregion
 
     }
 }

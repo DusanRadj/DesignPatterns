@@ -12,47 +12,20 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
     class YouTubeChannel : IObservable, IObserver, ISubscribe
     {
         private String name;
-        public String Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
         private Dictionary<String,YouTubeVideo> videos;
-        public Dictionary<String,YouTubeVideo> Videos
-        {
-            get { return videos; }
-            set { videos = value; }
-        }
-        
-        private List<IObserver> subscribers;
-
-        private Dictionary<String,YouTubeChannel> subscribedTo;
-        private List<Notification> notifications;
-
         private Dictionary<String, Playlist> playlists;
-
-        internal Dictionary<String, Playlist> Playlists
-        {
-            get { return playlists; }
-            set { playlists = value; }
-        }
+        private Dictionary<String, YouTubeChannel> subscribedTo;
+        private List<IObserver> subscribers;
+        private List<Notification> notifications;
 
         private IPlayAlghoritm playAlghoritm = new NoAdvertisingPlaying();
 
-        internal IPlayAlghoritm PlayAlghoritm
-        {
-            get { return playAlghoritm; }
-            set { playAlghoritm = value; }
-        }
-        
-
-        public YouTubeChannel(String name)
+        public YouTubeChannel(String name,IPlayAlghoritm playAlghoritm)
         {
             this.name = name;
             this.videos = new Dictionary<String,YouTubeVideo>();
             this.subscribers = new List<IObserver>();
-
+            this.playAlghoritm = playAlghoritm;
             this.subscribedTo = new Dictionary<String, YouTubeChannel>();
             this.notifications = new List<Notification>();
             this.playlists = new Dictionary<String,Playlist>();
@@ -95,7 +68,7 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
                 try
                 {
                     YouTubeVideo video = this.videos[videoTitle];
-                    playlist.addVideoToPlaylist(video);
+                    playlist.addVideo(video);
                 }
                 catch (KeyNotFoundException)
                 {
@@ -116,7 +89,7 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
             try
             {
                 Playlist playlist = this.playlists[playlistName];
-                playlist.removeVideoFromPlaylist();
+                playlist.removeVideo();
             }
             catch (KeyNotFoundException)
             {
@@ -128,7 +101,7 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
         {
             foreach (KeyValuePair<String, Playlist> pair in this.playlists)
             {
-                pair.Value.displayPlaylist();
+                pair.Value.display();
             }
         } 
 
@@ -269,6 +242,33 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
 
         #endregion
 
+        #region properties
+
+        internal IPlayAlghoritm PlayAlghoritm
+        {
+            get { return playAlghoritm; }
+            set { playAlghoritm = value; }
+        }
+
+        internal Dictionary<String, Playlist> Playlists
+        {
+            get { return playlists; }
+            set { playlists = value; }
+        }
+        
+        public Dictionary<String, YouTubeVideo> Videos
+        {
+            get { return videos; }
+            set { videos = value; }
+        }
+        
+        public String Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        #endregion
 
     }
 }

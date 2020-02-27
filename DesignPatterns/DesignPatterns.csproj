@@ -73,7 +73,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WithoutPatternApp.cs" />
     <Compile Include="youtubeChannel\pattern\strategies\AdvertisingPlaying.cs" />
-    <Compile Include="youtubeChannel\pattern\BasicYouTubeChannel.cs" />
     <Compile Include="youtubeChannel\pattern\interfaces\IPlayAlghoritm.cs" />
     <Compile Include="youtubeChannel\pattern\interfaces\ISubscribe.cs" />
     <Compile Include="googleAccount\pattern\GoogleAccount.cs" />
@@ -83,14 +82,18 @@
     <Compile Include="youtubeChannel\pattern\interfaces\IObserver.cs" />
     <Compile Include="youtubeChannel\pattern\strategies\NoAdvertisingPlaying.cs" />
     <Compile Include="youtubeChannel\pattern\Playlist.cs" />
-    <Compile Include="youtubeChannel\pattern\PremiumYouTubeChannel.cs" />
     <Compile Include="youtubeChannel\pattern\YouTubeChannel.cs" />
     <Compile Include="youtubeChannel\common\YouTubeVideo.cs" />
     <Compile Include="youtubeChannel\pattern\YouTubeApp.cs" />
     <Compile Include="googleAccount\withoutPattern\GoogleAccount.cs" />
+    <Compile Include="youtubeChannel\withoutPattern\playlists\BasicPlaylist.cs" />
+    <Compile Include="youtubeChannel\withoutPattern\channels\BasicYouTubeChannel.cs" />
     <Compile Include="youtubeChannel\withoutPattern\ISubscribe.cs" />
+    <Compile Include="youtubeChannel\withoutPattern\playlists\Playlist.cs" />
+    <Compile Include="youtubeChannel\withoutPattern\playlists\PremiumPlaylist.cs" />
+    <Compile Include="youtubeChannel\withoutPattern\channels\PremiumYouTubeChannel.cs" />
     <Compile Include="youtubeChannel\withoutPattern\YouTubeApp.cs" />
-    <Compile Include="youtubeChannel\withoutPattern\YouTubeChannel.cs" />
+    <Compile Include="youtubeChannel\withoutPattern\channels\YouTubeChannel.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="MediaPlayer">

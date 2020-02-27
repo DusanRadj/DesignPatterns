@@ -10,9 +10,8 @@ namespace DesignPatterns.pizzaOrder.pattern
 
         protected String name = "No name";
 
-        
-
         public abstract double cost();
+        
         public String getName()
         {
             return this.name;

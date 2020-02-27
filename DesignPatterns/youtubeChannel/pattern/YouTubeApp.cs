@@ -54,11 +54,11 @@ namespace DesignPatterns.youtubeChannel.observerPattern
             {
                 if (type.Equals("basic"))
                 {
-                    channels.Add(name, new BasicYouTubeChannel(name));//factory pattern
+                    channels.Add(name, new YouTubeChannel(name,new AdvertisingPlaying()));//factory pattern
                 }
                 else
                 {
-                    channels.Add(name, new PremiumYouTubeChannel(name));
+                    channels.Add(name, new YouTubeChannel(name,new NoAdvertisingPlaying()));
                 }
                 
             }

@@ -13,25 +13,42 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
         {
             return channels;
         }
-        
+
+        private static List<YouTubeVideo> advertisements = new List<YouTubeVideo>();
+        public static List<YouTubeVideo> getAdvertisements()
+        {
+            return advertisements;
+        }
 
         public YouTubeApp()
         {
-
+            advertisements.Add(new YouTubeVideo("add", "Youtube advertisement description", "www.youtube,com", 4));
         }
 
         public void createYouTubeChannel()
         {
             Console.WriteLine("Enter name for the channel: ");
             String name = Console.ReadLine();
+            Console.WriteLine("Enter type of channel (basic/premium)");
+            String type = Console.ReadLine();
+
             try
             {
-                channels.Add(name, new YouTubeChannel(name));
+                if (type.Equals("basic"))
+                {
+                    channels.Add(name, new BasicYouTubeChannel(name));//factory pattern
+                }
+                else
+                {
+                    channels.Add(name, new PremiumYouTubeChannel(name));
+                }
+
             }
             catch (ArgumentException)
             {
                 Console.WriteLine("Channel with that name already exists!");
             }
+
         }
 
         public void subscribeChannel()
@@ -146,7 +163,82 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
             }
         }
 
-      
+        public void createNewPlaylist()
+        {
+            Console.WriteLine("Enter youtube channel: ");
+            String channelName = Console.ReadLine();
+            try
+            {
+                YouTubeChannel channel = channels[channelName];
+                channel.createPlaylist();
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Youtube channel name does not exist!");
+            }
+        }
+
+        public void playPlaylist()
+        {
+            Console.WriteLine("Enter youtube channel: ");
+            String channelName = Console.ReadLine();
+            try
+            {
+                YouTubeChannel channel = channels[channelName];
+                channel.playPlaylist();
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Youtube channel name does not exist!");
+            }
+        }
+
+        public void addVideoToPlaylist()
+        {
+            Console.WriteLine("Enter youtube channel: ");
+            String channelName = Console.ReadLine();
+            try
+            {
+                YouTubeChannel channel = channels[channelName];
+                channel.addVideoToPlaylist();
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Youtube channel name does not exist!");
+            }
+        }
+
+        public void displayPlaylists()
+        {
+            Console.WriteLine("Enter youtube channel: ");
+            String channelName = Console.ReadLine();
+            try
+            {
+                YouTubeChannel channel = channels[channelName];
+                channel.displayPlaylists();
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Youtube channel name does not exist!");
+            }
+        }
+
+
+        public void playVideo()
+        {
+            Console.WriteLine("Enter youtube channel: ");
+            String channelName = Console.ReadLine();
+            try
+            {
+                YouTubeChannel channel = channels[channelName];
+                channel.playVideo();
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Youtube channel name does not exist!");
+            }
+
+        }
 
         public void displayMenu()
         {
@@ -159,6 +251,11 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
             Console.WriteLine("5. Unsubscribe channel                                   ");
             Console.WriteLine("6. View youtube channel notifications                    ");
             Console.WriteLine("7. Clear youtube channel notifications                  ");
+            Console.WriteLine("8. Create new playlist                                  ");
+            Console.WriteLine("9. Add video to playlist                                ");
+            Console.WriteLine("10. Display all playlists                                ");
+            Console.WriteLine("11. Play video                                ");
+            Console.WriteLine("12. Play playlist                                ");
             Console.WriteLine("0. Exit                                                  ");
             Console.WriteLine("---------------------------------------------------------");
         }
@@ -198,6 +295,21 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
                 case 7:
                     this.clearYouTubeChannelNotifications();
                     break;
+                case 8:
+                    this.createNewPlaylist();
+                    break;
+                case 9:
+                    this.addVideoToPlaylist();
+                    break;
+                case 10:
+                    this.displayPlaylists();
+                    break;
+                case 11:
+                    this.playVideo();
+                    break;
+                case 12:
+                    this.playPlaylist();
+                    break;
                 case 0:
                     Console.WriteLine("Exiting from music player app...");
                     break;
@@ -225,5 +337,6 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
                 option = this.callAction();
             } while (option != 0);
         }
+
     }
 }
