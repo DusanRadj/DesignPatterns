@@ -149,16 +149,16 @@ namespace DesignPatterns.googleAccount.pattern
 
         public void displayMenu()
         {
-            Console.WriteLine("---------------------------------------------------------");
-            Console.WriteLine("Options:                                                 ");
-            Console.WriteLine("1. Create Google account                                 ");
-            Console.WriteLine("2. Display all google accounts                           ");
-            Console.WriteLine("3. Subscribe google account                              ");
-            Console.WriteLine("4. Unsubscribe google account                            ");
-            Console.WriteLine("5. View google account emails                            ");
-            Console.WriteLine("6. Send email                                            ");
-            Console.WriteLine("0. Exit                                                  ");
-            Console.WriteLine("---------------------------------------------------------");
+            Console.WriteLine("-------------------------------------------------------------------------");
+            Console.WriteLine("Options:                                                                 ");
+            Console.WriteLine("1. Create Google account                                                 ");
+            Console.WriteLine("2. Display all google accounts                                           ");
+            Console.WriteLine("3. Subscribe google account                                              ");
+            Console.WriteLine("4. Unsubscribe google account                                            ");
+            Console.WriteLine("5. View google account emails                                            ");
+            Console.WriteLine("6. Send email                                                            ");
+            Console.WriteLine("0. Exit                                                                  ");
+            Console.WriteLine("-------------------------------------------------------------------------");
         }
 
         public int callAction()

@@ -5,6 +5,7 @@ using System.Text;
 using DesignPatterns.musicPlayer.withoutPattern;
 using DesignPatterns.googleAccount.withoutPattern;
 using DesignPatterns.youtubeChannel.withoutPattern;
+using DesignPatterns.pizzaOrder.withoutPattern;
 
 namespace DesignPatterns
 {
@@ -13,12 +14,14 @@ namespace DesignPatterns
         private MusicPlayerApp musicPlayerApp;
         private GoogleAccountApp googleAccountApp;
         private YouTubeApp youTubeApp;
+        private PizzaOrderApp pizzaOrderApp;
 
         public WithoutPatternApp()
         {
             this.musicPlayerApp = new MusicPlayerApp();
             this.googleAccountApp = new GoogleAccountApp();
             this.youTubeApp = new YouTubeApp();
+            this.pizzaOrderApp = new PizzaOrderApp();
         }
 
         public void menu()
@@ -29,6 +32,7 @@ namespace DesignPatterns
                 Console.WriteLine("1. Music player ");
                 Console.WriteLine("2. YouTube ");
                 Console.WriteLine("3. Google account");
+                Console.WriteLine("4. Pizza order");
                 String option = Console.ReadLine();
 
                 Console.Clear();
@@ -45,8 +49,13 @@ namespace DesignPatterns
                             this.youTubeApp.startApp();
                             break;
                         }
+                    case "3":
+                        {
+                            this.googleAccountApp.startApp();
+                            break;
+                        }
                     default:
-                        this.googleAccountApp.startApp();
+                        this.pizzaOrderApp.startApp();
                         break;
                 }
             }

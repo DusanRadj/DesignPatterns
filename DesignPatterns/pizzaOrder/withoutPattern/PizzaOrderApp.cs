@@ -2,57 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DesignPatterns.pizzaOrder.withoutPattern.orders;
 
-namespace DesignPatterns.pizzaOrder.pattern
+namespace DesignPatterns.pizzaOrder.withoutPattern
 {
     class PizzaOrderApp
     {
         private OnlinePizzaOrder onlinePizzaOrder;
         private InPlacePizzaOrder inPlacePizzaOrder;
-        private AbstractPizzaOrder selectedPizzaStore;
-        private PizzaFactory pizzaFactory;
-
-        private static PizzaOrderApp instance;
-
-        private PizzaOrderApp()
+        
+        public PizzaOrderApp()
         {
-            this.pizzaFactory = new PizzaFactory();
-            this.onlinePizzaOrder = new OnlinePizzaOrder(this.pizzaFactory);
-            this.inPlacePizzaOrder = new InPlacePizzaOrder(this.pizzaFactory);
-            this.selectedPizzaStore = inPlacePizzaOrder;
+            this.onlinePizzaOrder = new OnlinePizzaOrder();
+            this.inPlacePizzaOrder = new InPlacePizzaOrder();
         }
-
-        public static PizzaOrderApp getInstance()
-        {
-            if (instance == null)
-            {
-                instance = new PizzaOrderApp();
-            }
-
-            return instance;
-        }
-
-        public void changePizzaStore()
-        {
-            if (this.selectedPizzaStore == this.inPlacePizzaOrder)
-            {
-                this.selectedPizzaStore = this.onlinePizzaOrder;
-                Console.WriteLine("Pizza store changed from 'In place' to 'Online'");
-            }
-            else
-            {
-                this.selectedPizzaStore = this.inPlacePizzaOrder;
-                Console.WriteLine("Pizza store changed from 'Online' to 'In place'");
-            }
-        }
-
 
         private void displayMenu()
         {
             Console.WriteLine("---------------------------------------                              ");
             Console.WriteLine("Options:                                                             ");
-            Console.WriteLine("1. Change pizza store                                                ");
-            Console.WriteLine("2. Start ordering process                                            ");
+            Console.WriteLine("1. Start ordering process at In-Place pizza store                    ");
+            Console.WriteLine("2. Start ordering process at Online pizza store                      ");
             Console.WriteLine("0. Exit                                                              ");
             Console.WriteLine("----------------------------------------                             ");
         }
@@ -73,10 +43,10 @@ namespace DesignPatterns.pizzaOrder.pattern
             switch (option)
             {
                 case 1:
-                    this.changePizzaStore();
+                    this.inPlacePizzaOrder.startOrderingProcess();
                     break;
                 case 2:
-                    this.selectedPizzaStore.startOrderingProcess();
+                    this.onlinePizzaOrder.startOrderingProcess();
                     break;
                 case 0:
                     Console.WriteLine("Exiting from pizza order app...");
