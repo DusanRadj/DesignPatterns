@@ -4,3 +4,5 @@ c:\users\jasmina\documents\visual studio 2010\Projects\DesignPatterns\DesignPatt
 c:\users\jasmina\documents\visual studio 2010\Projects\DesignPatterns\DesignPatterns\obj\x86\Debug\DesignPatterns.pdb
 C:\Users\Jasmina\documents\visual studio 2010\Projects\DesignPatterns\DesignPatterns\obj\x86\Debug\Interop.MediaPlayer.dll
 C:\Users\Jasmina\documents\visual studio 2010\Projects\DesignPatterns\DesignPatterns\obj\x86\Debug\DesignPatterns.csproj.ResolveComReference.cache
+C:\Users\Jasmina\documents\visual studio 2010\Projects\DesignPatterns\DesignPatterns\bin\Debug\NAudio.dll
+C:\Users\Jasmina\documents\visual studio 2010\Projects\DesignPatterns\DesignPatterns\obj\x86\Debug\DesignPatterns.csprojResolveAssemblyReference.cache

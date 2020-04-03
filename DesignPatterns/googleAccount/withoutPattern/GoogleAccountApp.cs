@@ -165,10 +165,10 @@ namespace DesignPatterns.googleAccount.withoutPattern
                     this.displayAccounts();
                     break;
                 case 3:
-                    this.subscribeAccount(YouTubeApp.getYouTubeChannels());
+                    this.subscribeAccount(YouTubeApp.Channels);
                     break;
                 case 4:
-                    this.unsubscribeAccount(YouTubeApp.getYouTubeChannels());
+                    this.unsubscribeAccount(YouTubeApp.Channels);
                     break;
                 case 5:
                     this.viewGoogleAccountMails();
@@ -177,7 +177,7 @@ namespace DesignPatterns.googleAccount.withoutPattern
                     this.sendMail();
                     break;
                 case 0:
-                    Console.WriteLine("Exiting from music player app...");
+                    Console.WriteLine("Exiting from google account app...");
                     break;
                 default:
                     Console.WriteLine("---------------------------------------------------------");

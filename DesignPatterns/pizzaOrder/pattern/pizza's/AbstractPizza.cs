@@ -10,7 +10,7 @@ namespace DesignPatterns.pizzaOrder.pattern
 
         protected String name = "No name";
 
-        public abstract double cost();
+        public abstract int cost();
         
         public String getName()
         {

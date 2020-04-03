@@ -9,15 +9,20 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
     class YouTubeApp
     {
         private static Dictionary<String, YouTubeChannel> channels = new Dictionary<String, YouTubeChannel>();
-        public static Dictionary<String, YouTubeChannel> getYouTubeChannels()
+
+        internal static Dictionary<String, YouTubeChannel> Channels
         {
-            return channels;
+            get { return YouTubeApp.channels; }
+            set { YouTubeApp.channels = value; }
         }
 
+
         private static List<YouTubeVideo> advertisements = new List<YouTubeVideo>();
-        public static List<YouTubeVideo> getAdvertisements()
+
+        internal static List<YouTubeVideo> Advertisements
         {
-            return advertisements;
+            get { return YouTubeApp.advertisements; }
+            set { YouTubeApp.advertisements = value; }
         }
 
         public YouTubeApp()
@@ -250,12 +255,12 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
             Console.WriteLine("4. Subscribe channel                                     ");
             Console.WriteLine("5. Unsubscribe channel                                   ");
             Console.WriteLine("6. View youtube channel notifications                    ");
-            Console.WriteLine("7. Clear youtube channel notifications                  ");
-            Console.WriteLine("8. Create new playlist                                  ");
-            Console.WriteLine("9. Add video to playlist                                ");
+            Console.WriteLine("7. Clear youtube channel notifications                   ");
+            Console.WriteLine("8. Create new playlist                                   ");
+            Console.WriteLine("9. Add video to playlist                                 ");
             Console.WriteLine("10. Display all playlists                                ");
-            Console.WriteLine("11. Play video                                ");
-            Console.WriteLine("12. Play playlist                                ");
+            Console.WriteLine("11. Play video                                           ");
+            Console.WriteLine("12. Play playlist                                        ");
             Console.WriteLine("0. Exit                                                  ");
             Console.WriteLine("---------------------------------------------------------");
         }
@@ -311,7 +316,7 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
                     this.playPlaylist();
                     break;
                 case 0:
-                    Console.WriteLine("Exiting from music player app...");
+                    Console.WriteLine("Exiting from YouTube app...");
                     break;
                 default:
                     Console.WriteLine("----------------------------");

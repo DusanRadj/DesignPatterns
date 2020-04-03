@@ -13,22 +13,22 @@ namespace DesignPatterns.pizzaOrder.withoutPattern.pizza_s
             this.name = "Vegetariana";
         }
 
-        public override double cost()
+        public override int cost()
         {
-            double cost = 3.99;
+            int cost = 600;
             if (this.hasKetchup)
             {
-                cost += 0.19;
+                cost += 30;
             }
 
             if (this.hasMayonaise)
             {
-                cost += 0.29;
+                cost += 70;
             }
 
             if (this.hasOlives)
             {
-                cost += 0.35;
+                cost += 90;
             }
 
             return cost;

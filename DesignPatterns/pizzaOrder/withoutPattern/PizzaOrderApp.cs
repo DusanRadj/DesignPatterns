@@ -48,6 +48,9 @@ namespace DesignPatterns.pizzaOrder.withoutPattern
                 case 2:
                     this.onlinePizzaOrder.startOrderingProcess();
                     break;
+                case 3:
+                    this.inPlacePizzaOrder.refill();
+                    break;
                 case 0:
                     Console.WriteLine("Exiting from pizza order app...");
                     break;

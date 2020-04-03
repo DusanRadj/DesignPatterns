@@ -13,7 +13,7 @@ namespace DesignPatterns.pizzaOrder.withoutPattern.pizza_s
         protected bool hasMayonaise = false;
         protected bool hasOlives = false;
 
-        public abstract double cost();
+        public abstract int cost();
 
         public String getName()
         {

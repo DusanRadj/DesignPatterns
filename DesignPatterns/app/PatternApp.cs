@@ -11,19 +11,8 @@ namespace DesignPatterns
 {
     class PatternApp
     {
-        private MusicPlayerApp musicPlayerApp;
-        private GoogleAccountApp googleAccountApp;
-        private YouTubeApp youTubeApp;
-        private PizzaOrderApp pizzaOrderApp;
 
-        public PatternApp()
-        {
-            this.musicPlayerApp = MusicPlayerApp.getInstance();
-            this.googleAccountApp = GoogleAccountApp.getInstance();
-            this.youTubeApp = YouTubeApp.getInstance();
-            this.pizzaOrderApp = PizzaOrderApp.getInstance();
-            
-        }
+        public PatternApp() { }
 
         public void menu()
         {
@@ -44,25 +33,25 @@ namespace DesignPatterns
                 {
                     case "1":
                         {
-                            this.musicPlayerApp.startApp();
+                            MusicPlayerApp.getInstance().startApp();
                             break;
                         }
                     case "2":
                         {
-                            this.youTubeApp.startApp();
+                            YouTubeApp.getInstance().startApp();
                             break;
                         }
                     case "3":
                         {
-                            this.googleAccountApp.startApp();
+                            GoogleAccountApp.getInstance().startApp();
                             break;
                         }
                     default:
-                        this.pizzaOrderApp.startApp();
-                        break;
+                        {
+                            PizzaOrderApp.getInstance().startApp();
+                            break;
+                        }
                 }
-                
-
                 
             }
 

@@ -18,7 +18,7 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
             try
             {
                 YouTubeVideo video = this.Videos[videoTitle];
-                YouTubeApp.getAdvertisements()[0].play();
+                YouTubeApp.Advertisements[0].play();
                 video.play();
             }
             catch (KeyNotFoundException)

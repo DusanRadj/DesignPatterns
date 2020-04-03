@@ -14,7 +14,7 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
         {
             foreach (KeyValuePair<String, YouTubeVideo> video in videos)
             {
-                YouTubeApp.getAdvertisements()[0].play();
+                YouTubeApp.Advertisements[0].play();
                 video.Value.play();
             }
         }

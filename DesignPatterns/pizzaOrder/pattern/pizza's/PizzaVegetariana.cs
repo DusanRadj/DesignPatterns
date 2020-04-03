@@ -13,9 +13,9 @@ namespace DesignPatterns.pizzaOrder.pattern
             this.name = "Vegetariana";
         }
 
-        public override double cost()
+        public override int cost()
         {
-            return 3.99;
+            return 600;
         }
     }
 }

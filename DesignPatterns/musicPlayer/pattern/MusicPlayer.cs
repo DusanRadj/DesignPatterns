@@ -41,8 +41,9 @@ namespace DesignPatterns.musicPlayer.statePattern.model
             timer.Interval = 1000;
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
-        }
 
+            
+        }
 
         public void turnOn()
         {

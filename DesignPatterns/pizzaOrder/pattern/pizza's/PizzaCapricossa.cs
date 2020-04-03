@@ -12,9 +12,9 @@ namespace DesignPatterns.pizzaOrder.pattern
             this.name = "Capricossa";
         }
 
-        public override double cost()
+        public override int cost()
         {
-            return 5.0;
+            return 750;
         }
     }
 }

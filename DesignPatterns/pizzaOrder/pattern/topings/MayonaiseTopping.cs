@@ -15,9 +15,9 @@ namespace DesignPatterns.pizzaOrder.pattern.topings
             this.name = pizza.getName() + " + Mayonaise";
         }
 
-        public override double cost()
+        public override int cost()
         {
-            return 0.29 + pizza.cost();
+            return 70 + pizza.cost();
         }
 
         public override String getName()

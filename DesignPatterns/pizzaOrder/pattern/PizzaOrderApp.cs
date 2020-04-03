@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DesignPatterns.pizzaOrder.pattern.payment;
 
 namespace DesignPatterns.pizzaOrder.pattern
 {
@@ -18,8 +19,20 @@ namespace DesignPatterns.pizzaOrder.pattern
         {
             this.pizzaFactory = new PizzaFactory();
             this.onlinePizzaOrder = new OnlinePizzaOrder(this.pizzaFactory);
-            this.inPlacePizzaOrder = new InPlacePizzaOrder(this.pizzaFactory);
             this.selectedPizzaStore = inPlacePizzaOrder;
+
+            AbstractHandler h1 = new ThousandBillHandler(10, "ThousandBillHandler");
+            AbstractHandler h2 = new FiveHundredBillHandler(10, "FiveHunderBillHandler");
+            AbstractHandler h3 = new HundredBillHandler(10, "HundredBillHandler");
+            AbstractHandler h4 = new FiftyBillHandler(10, "FiftyBillHandler");
+            AbstractHandler h5 = new TenBillHandler(10, "TenBillHandler");
+
+            h1.setNextHandler(h2);
+            h2.setNextHandler(h3);
+            h3.setNextHandler(h4);
+            h4.setNextHandler(h5);
+
+            this.inPlacePizzaOrder = new InPlacePizzaOrder(this.pizzaFactory,h1);
         }
 
         public static PizzaOrderApp getInstance()
@@ -46,6 +59,19 @@ namespace DesignPatterns.pizzaOrder.pattern
             }
         }
 
+        public void refillBillHandler()
+        {
+            if (this.selectedPizzaStore == this.inPlacePizzaOrder)
+            {
+                this.inPlacePizzaOrder.refill();
+            }
+            else
+            {
+                Console.WriteLine("You must select inPlacePizzaStore in order to refill for now");
+            }
+
+        }
+
 
         private void displayMenu()
         {
@@ -53,6 +79,7 @@ namespace DesignPatterns.pizzaOrder.pattern
             Console.WriteLine("Options:                                                             ");
             Console.WriteLine("1. Change pizza store                                                ");
             Console.WriteLine("2. Start ordering process                                            ");
+            Console.WriteLine("3. Refill bill handler                                               ");
             Console.WriteLine("0. Exit                                                              ");
             Console.WriteLine("----------------------------------------                             ");
         }
@@ -77,6 +104,9 @@ namespace DesignPatterns.pizzaOrder.pattern
                     break;
                 case 2:
                     this.selectedPizzaStore.startOrderingProcess();
+                    break;
+                case 3:
+                    this.refillBillHandler();
                     break;
                 case 0:
                     Console.WriteLine("Exiting from pizza order app...");

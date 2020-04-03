@@ -365,7 +365,7 @@ namespace DesignPatterns.youtubeChannel.observerPattern
                     this.switchTypeOfChannel();
                     break;
                 case 0:
-                    Console.WriteLine("Exiting from music player app...");
+                    Console.WriteLine("Exiting from YouTube app...");
                     break;
                 default:
                     Console.WriteLine("----------------------------");

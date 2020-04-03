@@ -13,9 +13,9 @@ namespace DesignPatterns.pizzaOrder.pattern
             this.name = "Margherita";
         }
 
-        public override double cost()
+        public override int cost()
         {
-            return 6.99;
+            return 900;
         }
     }
 }

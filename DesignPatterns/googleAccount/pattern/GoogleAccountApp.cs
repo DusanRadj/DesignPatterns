@@ -194,7 +194,7 @@ namespace DesignPatterns.googleAccount.pattern
                     this.sendMail();
                     break;
                 case 0:
-                    Console.WriteLine("Exiting from music player app...");
+                    Console.WriteLine("Exiting from google account app...");
                     break;
                 default:
                     Console.WriteLine("---------------------------------------------------------");
