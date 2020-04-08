@@ -9,22 +9,8 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
     class YouTubeApp
     {
         private static Dictionary<String, YouTubeChannel> channels = new Dictionary<String, YouTubeChannel>();
-
-        internal static Dictionary<String, YouTubeChannel> Channels
-        {
-            get { return YouTubeApp.channels; }
-            set { YouTubeApp.channels = value; }
-        }
-
-
         private static List<YouTubeVideo> advertisements = new List<YouTubeVideo>();
-
-        internal static List<YouTubeVideo> Advertisements
-        {
-            get { return YouTubeApp.advertisements; }
-            set { YouTubeApp.advertisements = value; }
-        }
-
+        
         public YouTubeApp()
         {
             advertisements.Add(new YouTubeVideo("add", "Youtube advertisement description", "www.youtube,com", 4));
@@ -83,7 +69,6 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
             }
         }
 
-
         public void unsubscribeChannel()
         {
             Console.WriteLine("Enter your youtube channel name: ");
@@ -110,7 +95,6 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
                 Console.WriteLine("Your youtube channel name is incorrect!");
             }
         }
-
 
         public void createNewVideo()
         {
@@ -150,7 +134,6 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
                 Console.WriteLine("Youtube channel name does not exist!");
             }
         }
-
 
         public void clearYouTubeChannelNotifications()
         {
@@ -228,7 +211,6 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
             }
         }
 
-
         public void playVideo()
         {
             Console.WriteLine("Enter youtube channel: ");
@@ -247,22 +229,22 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
 
         public void displayMenu()
         {
-            Console.WriteLine("---------------------------------------------------------");
-            Console.WriteLine("Options:                                                 ");
-            Console.WriteLine("1. Create YouTube channel                                ");
-            Console.WriteLine("2. Create video for youtube channel                      ");
-            Console.WriteLine("3. Display all channels                                  ");
-            Console.WriteLine("4. Subscribe channel                                     ");
-            Console.WriteLine("5. Unsubscribe channel                                   ");
-            Console.WriteLine("6. View youtube channel notifications                    ");
-            Console.WriteLine("7. Clear youtube channel notifications                   ");
-            Console.WriteLine("8. Create new playlist                                   ");
-            Console.WriteLine("9. Add video to playlist                                 ");
-            Console.WriteLine("10. Display all playlists                                ");
-            Console.WriteLine("11. Play video                                           ");
-            Console.WriteLine("12. Play playlist                                        ");
-            Console.WriteLine("0. Exit                                                  ");
-            Console.WriteLine("---------------------------------------------------------");
+            Console.WriteLine("---------------------------------------------------------------------");
+            Console.WriteLine("Options:                                                             ");
+            Console.WriteLine("1. Create YouTube channel                                            ");
+            Console.WriteLine("2. Create video for youtube channel                                  "); 
+            Console.WriteLine("3. Display all channels                                              ");
+            Console.WriteLine("4. Subscribe channel                                                 ");
+            Console.WriteLine("5. Unsubscribe channel                                               ");
+            Console.WriteLine("6. View youtube channel notifications                                ");
+            Console.WriteLine("7. Clear youtube channel notifications                               ");
+            Console.WriteLine("8. Create new playlist                                               ");
+            Console.WriteLine("9. Add video to playlist                                             ");
+            Console.WriteLine("10. Display all playlists                                            ");
+            Console.WriteLine("11. Play video                                                       ");
+            Console.WriteLine("12. Play playlist                                                    ");
+            Console.WriteLine("0. Exit                                                              ");
+            Console.WriteLine("---------------------------------------------------------------------");
         }
 
         public int callAction()
@@ -271,9 +253,9 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
             Console.Write("Command: ");
             while (!Int32.TryParse(Console.ReadLine(), out option))
             {
-                Console.WriteLine("----------------------------");
-                Console.WriteLine("Invalid input, please enter a valid option (from 0 to 8)!");
-                Console.WriteLine("----------------------------");
+                Console.WriteLine("---------------------------------------------------------------------");
+                Console.WriteLine("Invalid input, please enter a valid option (from 0 to 13)!           ");
+                Console.WriteLine("---------------------------------------------------------------------");
                 Console.Write("Command: ");
             }
 
@@ -319,11 +301,11 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
                     Console.WriteLine("Exiting from YouTube app...");
                     break;
                 default:
-                    Console.WriteLine("----------------------------");
-                    Console.WriteLine("Invalid input, please enter a valid option (from 0 to 8)!");
+                    Console.WriteLine("---------------------------------------------------------------------");
+                    Console.WriteLine("Invalid input, please enter a valid option (from 0 to 13)!           ");
                     break;
             }
-            Console.WriteLine("----------------------------");
+            Console.WriteLine("---------------------------------------------------------------------"); 
             return option;
         }
 
@@ -342,6 +324,24 @@ namespace DesignPatterns.youtubeChannel.withoutPattern
                 option = this.callAction();
             } while (option != 0);
         }
+
+        #region properties
+
+        internal static Dictionary<String, YouTubeChannel> Channels
+        {
+            get { return YouTubeApp.channels; }
+            set { YouTubeApp.channels = value; }
+        }
+
+
+        internal static List<YouTubeVideo> Advertisements
+        {
+            get { return YouTubeApp.advertisements; }
+            set { YouTubeApp.advertisements = value; }
+        }
+
+
+        #endregion
 
     }
 }

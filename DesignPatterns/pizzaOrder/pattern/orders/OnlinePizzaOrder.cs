@@ -8,7 +8,7 @@ namespace DesignPatterns.pizzaOrder.pattern
 {
     class OnlinePizzaOrder : AbstractPizzaOrder
     {
-        public OnlinePizzaOrder(PizzaFactory pizzaFactory) : base(pizzaFactory) { }
+        public OnlinePizzaOrder(){ }
 
         public override void servePizza()
         {
@@ -23,7 +23,7 @@ namespace DesignPatterns.pizzaOrder.pattern
 
         public override void chargeBill()
         {
-            Console.WriteLine(this.chosenPizza.getName() + " is charged online from your credit card with total sum of " + this.chosenPizza.cost() + "RSD");
+            Console.WriteLine(this.chosenPizza.ToString() + " is charged online from your credit card with total sum of " + this.chosenPizza.cost() + "RSD");
             Console.ResetColor();
             Console.WriteLine();
         }

@@ -11,28 +11,23 @@ namespace DesignPatterns.pizzaOrder.pattern
         private OnlinePizzaOrder onlinePizzaOrder;
         private InPlacePizzaOrder inPlacePizzaOrder;
         private AbstractPizzaOrder selectedPizzaStore;
-        private PizzaFactory pizzaFactory;
 
         private static PizzaOrderApp instance;
 
         private PizzaOrderApp()
         {
-            this.pizzaFactory = new PizzaFactory();
-            this.onlinePizzaOrder = new OnlinePizzaOrder(this.pizzaFactory);
-            this.selectedPizzaStore = inPlacePizzaOrder;
-
-            AbstractHandler h1 = new ThousandBillHandler(10, "ThousandBillHandler");
-            AbstractHandler h2 = new FiveHundredBillHandler(10, "FiveHunderBillHandler");
-            AbstractHandler h3 = new HundredBillHandler(10, "HundredBillHandler");
-            AbstractHandler h4 = new FiftyBillHandler(10, "FiftyBillHandler");
-            AbstractHandler h5 = new TenBillHandler(10, "TenBillHandler");
+            AbstractHandler h1 = new FiveHundredBillHandler(10, "FiveHunderBillHandler");
+            AbstractHandler h2 = new HundredBillHandler(10, "HundredBillHandler");
+            AbstractHandler h3 = new FiftyBillHandler(10, "FiftyBillHandler");
+            AbstractHandler h4 = new TenBillHandler(10, "TenBillHandler");
 
             h1.setNextHandler(h2);
             h2.setNextHandler(h3);
             h3.setNextHandler(h4);
-            h4.setNextHandler(h5);
 
-            this.inPlacePizzaOrder = new InPlacePizzaOrder(this.pizzaFactory,h1);
+            this.inPlacePizzaOrder = new InPlacePizzaOrder(h1);
+            this.onlinePizzaOrder = new OnlinePizzaOrder();
+            this.selectedPizzaStore = inPlacePizzaOrder;
         }
 
         public static PizzaOrderApp getInstance()
@@ -72,6 +67,18 @@ namespace DesignPatterns.pizzaOrder.pattern
 
         }
 
+        public void addThousandBillHandler()
+        {
+            AbstractHandler h1 = new ThousandBillHandler(10, "ThousandBillHandler");
+            h1.setNextHandler(this.inPlacePizzaOrder.BillHandler);
+            this.inPlacePizzaOrder.BillHandler = h1;
+        }
+
+        public void showBillsInHandlers()
+        {
+            Console.Write(this.inPlacePizzaOrder.BillHandler.ToString());
+        }
+
 
         private void displayMenu()
         {
@@ -80,6 +87,8 @@ namespace DesignPatterns.pizzaOrder.pattern
             Console.WriteLine("1. Change pizza store                                                ");
             Console.WriteLine("2. Start ordering process                                            ");
             Console.WriteLine("3. Refill bill handler                                               ");
+            Console.WriteLine("4. Demonstrate adding bill handler in real time                      ");
+            Console.WriteLine("5. Show bills in handlers                                            ");
             Console.WriteLine("0. Exit                                                              ");
             Console.WriteLine("----------------------------------------                             ");
         }
@@ -92,7 +101,7 @@ namespace DesignPatterns.pizzaOrder.pattern
             while (!Int32.TryParse(Console.ReadLine(), out option))
             {
                 Console.WriteLine("----------------------------");
-                Console.WriteLine("Invalid input, please enter a valid option (from 0 to 2)!");
+                Console.WriteLine("Invalid input, please enter a valid option (from 0 to 5)!");
                 Console.WriteLine("----------------------------");
                 Console.Write("Command: ");
             }
@@ -108,12 +117,18 @@ namespace DesignPatterns.pizzaOrder.pattern
                 case 3:
                     this.refillBillHandler();
                     break;
+                case 4:
+                    this.addThousandBillHandler();
+                    break;
+                case 5:
+                    this.showBillsInHandlers();
+                    break;
                 case 0:
                     Console.WriteLine("Exiting from pizza order app...");
                     break;
                 default:
                     Console.WriteLine("----------------------------");
-                    Console.WriteLine("Invalid input, please enter a valid option (from 0 to 2)!");
+                    Console.WriteLine("Invalid input, please enter a valid option (from 0 to 5)!");
                     break;
             }
             Console.WriteLine("----------------------------");

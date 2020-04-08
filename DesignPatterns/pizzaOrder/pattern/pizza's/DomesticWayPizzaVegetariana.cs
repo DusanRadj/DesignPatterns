@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace DesignPatterns.pizzaOrder.pattern
+namespace DesignPatterns.pizzaOrder.pattern.pizza_s
 {
-    class PizzaCapricossa : AbstractPizza
+    class DomesticWayPizzaVegetariana : AbstractPizza
     {
-        public PizzaCapricossa()
+        public DomesticWayPizzaVegetariana(int size)
         {
-            this.name = "Capricossa";
-            this.Size = 40;
+            this.name = "Vegetariana on domestic way";
+            this.Size = size;
         }
 
         public override int cost()
         {
-            return 750;
+            return 800;
         }
 
         public override void simulateBaking()
@@ -24,7 +24,7 @@ namespace DesignPatterns.pizzaOrder.pattern
             double radius = 4;
             double thickness = 0.4;
             Console.ForegroundColor = ConsoleColor.Yellow;
-            char symbol = '.';
+            char symbol = '*';
 
             Console.WriteLine();
             double rIn = radius - thickness;
@@ -33,12 +33,14 @@ namespace DesignPatterns.pizzaOrder.pattern
             List<ConsoleColor> colors = new List<ConsoleColor>();
             colors.Add(ConsoleColor.White);
             colors.Add(ConsoleColor.Yellow);
+            colors.Add(ConsoleColor.DarkYellow);
+
             Console.SetCursorPosition(0, Console.CursorTop + 10);
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
             {
                 Console.SetCursorPosition(0, Console.CursorTop - 10);
                 if (i != 0)
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1500);
 
                 for (double y = -radius; y <= radius; ++y)
                 {
@@ -47,8 +49,7 @@ namespace DesignPatterns.pizzaOrder.pattern
                         double value = x * x + y * y;
                         if (value >= rIn * rIn && value <= rOut * rOut)
                         {
-                            Console.BackgroundColor = ConsoleColor.DarkYellow;
-                            
+                            Console.BackgroundColor = ConsoleColor.DarkRed;
                             Console.Write(symbol);
                             Console.BackgroundColor = ConsoleColor.Black;
                         }
@@ -56,7 +57,7 @@ namespace DesignPatterns.pizzaOrder.pattern
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.BackgroundColor = colors[i];
-                            Console.Write('x');
+                            Console.Write('.');
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.BackgroundColor = ConsoleColor.Black;
                         }

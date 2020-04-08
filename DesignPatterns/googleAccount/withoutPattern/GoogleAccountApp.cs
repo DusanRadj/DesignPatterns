@@ -10,7 +10,6 @@ namespace DesignPatterns.googleAccount.withoutPattern
     {
         private Dictionary<String, GoogleAccount> googleAccounts;
 
-
         public GoogleAccountApp()
         {
             this.googleAccounts = new Dictionary<String, GoogleAccount>();
@@ -57,7 +56,6 @@ namespace DesignPatterns.googleAccount.withoutPattern
                 Console.WriteLine("Your google account name is incorrect!");
             }
         }
-
 
         public void unsubscribeAccount(Dictionary<String, YouTubeChannel> channels)
         {
@@ -129,19 +127,18 @@ namespace DesignPatterns.googleAccount.withoutPattern
             }
         }
 
-
         public void displayMenu()
         {
-            Console.WriteLine("---------------------------------------------------------");
-            Console.WriteLine("Options:                                                 ");
-            Console.WriteLine("1. Create Google account                                 ");
-            Console.WriteLine("2. Display all google accounts                           ");
-            Console.WriteLine("3. Subscribe google account                              ");
-            Console.WriteLine("4. Unsubscribe google account                            ");
-            Console.WriteLine("5. View google account emails                            ");
-            Console.WriteLine("6. Send email                                            ");
-            Console.WriteLine("0. Exit                                                  ");
-            Console.WriteLine("---------------------------------------------------------");
+            Console.WriteLine("-------------------------------------------------------------------------");
+            Console.WriteLine("Options:                                                                 ");
+            Console.WriteLine("1. Create Google account                                                 ");
+            Console.WriteLine("2. Display all google accounts                                           ");
+            Console.WriteLine("3. Subscribe google account                                              ");
+            Console.WriteLine("4. Unsubscribe google account                                            ");
+            Console.WriteLine("5. View google account emails                                            ");
+            Console.WriteLine("6. Send email                                                            ");
+            Console.WriteLine("0. Exit                                                                  ");
+            Console.WriteLine("-------------------------------------------------------------------------");
         }
 
         public int callAction()
@@ -150,9 +147,9 @@ namespace DesignPatterns.googleAccount.withoutPattern
             Console.Write("Command: ");
             while (!Int32.TryParse(Console.ReadLine(), out option))
             {
-                Console.WriteLine("---------------------------------------------------------");
-                Console.WriteLine("Invalid input, please enter a valid option (from 0 to 6)!");
-                Console.WriteLine("---------------------------------------------------------");
+                Console.WriteLine("-------------------------------------------------------------------------");
+                Console.WriteLine("Invalid input, please enter a valid option (from 0 to 6)!                ");
+                Console.WriteLine("-------------------------------------------------------------------------");
                 Console.Write("Command: ");
             }
 
@@ -180,11 +177,11 @@ namespace DesignPatterns.googleAccount.withoutPattern
                     Console.WriteLine("Exiting from google account app...");
                     break;
                 default:
-                    Console.WriteLine("---------------------------------------------------------");
-                    Console.WriteLine("Invalid input, please enter a valid option (from 0 to 6)!");
+                    Console.WriteLine("-------------------------------------------------------------------------");
+                    Console.WriteLine("Invalid input, please enter a valid option (from 0 to 6)!                ");
                     break;
             }
-            Console.WriteLine("---------------------------------------------------------");
+            Console.WriteLine("-------------------------------------------------------------------------");
             return option;
         }
 

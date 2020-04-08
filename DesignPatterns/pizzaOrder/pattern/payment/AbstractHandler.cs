@@ -8,22 +8,11 @@ namespace DesignPatterns.pizzaOrder.pattern.payment
     abstract class AbstractHandler
     {
 
-        protected int amountOfBillsInHandler;   //number of bills of billValue in handler left
-        private AbstractHandler nextHandler;
+        protected int amountOfBillsInHandler;   
+        protected AbstractHandler nextHandler;
+        protected int billValue;                
+        protected String handlerName;
 
-        public AbstractHandler NextHandler
-        {
-            get { return nextHandler; }
-            set { nextHandler = value; }
-        }
-        protected int billValue;                //apoen
-        private String handlerName;
-
-        public String HandlerName
-        {
-            get { return handlerName; }
-            set { handlerName = value; }
-        }
 
         public AbstractHandler(int amountOfBillsInHandler, String handlerName)
         {
@@ -78,6 +67,19 @@ namespace DesignPatterns.pizzaOrder.pattern.payment
                 Console.WriteLine("Refill failed");
             }
 
+        }
+
+        public override string ToString()
+        {
+            string retVal = this.handlerName + ", amount of " + this.billValue + " bills in handler is: " + this.amountOfBillsInHandler;
+            retVal += System.Environment.NewLine;
+
+            if (this.nextHandler != null)
+            {
+                retVal += nextHandler.ToString();
+            }
+
+            return retVal;
         }
 
 

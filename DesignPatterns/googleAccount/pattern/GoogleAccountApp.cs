@@ -10,12 +10,6 @@ namespace DesignPatterns.googleAccount.pattern
     class GoogleAccountApp
     {
         private Dictionary<String, GoogleAccount> googleAccounts;
-        internal Dictionary<String, GoogleAccount> GoogleAccounts
-        {
-            get { return googleAccounts; }
-            set { googleAccounts = value; }
-        }
-        
         private static GoogleAccountApp instance;
 
         private GoogleAccountApp()
@@ -74,7 +68,6 @@ namespace DesignPatterns.googleAccount.pattern
                 Console.WriteLine("Your google account name is incorrect!");
             }
         }
-
 
         public void unsubscribeAccount(Dictionary<String, YouTubeChannel> channels)
         {
@@ -146,7 +139,6 @@ namespace DesignPatterns.googleAccount.pattern
             }
         }
 
-
         public void displayMenu()
         {
             Console.WriteLine("-------------------------------------------------------------------------");
@@ -167,9 +159,9 @@ namespace DesignPatterns.googleAccount.pattern
             Console.Write("Command: ");
             while (!Int32.TryParse(Console.ReadLine(), out option))
             {
-                Console.WriteLine("---------------------------------------------------------");
-                Console.WriteLine("Invalid input, please enter a valid option (from 0 to 6)!");
-                Console.WriteLine("---------------------------------------------------------");
+                Console.WriteLine("-------------------------------------------------------------------------");
+                Console.WriteLine("Invalid input, please enter a valid option (from 0 to 6)!                ");
+                Console.WriteLine("-------------------------------------------------------------------------");
                 Console.Write("Command: ");
             }
 
@@ -197,11 +189,11 @@ namespace DesignPatterns.googleAccount.pattern
                     Console.WriteLine("Exiting from google account app...");
                     break;
                 default:
-                    Console.WriteLine("---------------------------------------------------------");
-                    Console.WriteLine("Invalid input, please enter a valid option (from 0 to 6)!");
+                    Console.WriteLine("-------------------------------------------------------------------------");
+                    Console.WriteLine("Invalid input, please enter a valid option (from 0 to 6)!                ");
                     break;
             }
-            Console.WriteLine("---------------------------------------------------------");
+            Console.WriteLine("-------------------------------------------------------------------------");
             return option;
         }
 
@@ -220,6 +212,17 @@ namespace DesignPatterns.googleAccount.pattern
                 option = this.callAction();
             } while (option != 0);
         }
+
+        #region properties
+        
+        internal Dictionary<String, GoogleAccount> GoogleAccounts
+        {
+            get { return googleAccounts; }
+            set { googleAccounts = value; }
+        }
+        
+        
+        #endregion
 
     }
 }

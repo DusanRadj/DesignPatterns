@@ -93,6 +93,7 @@ namespace DesignPatterns.musicPlayer.withoutPattern
         {
             if (state == TURNED_OFF)
             {
+                Console.WriteLine("Device is already turned off!");
             }
             else if (state == STAND_BY)
             {
@@ -130,6 +131,7 @@ namespace DesignPatterns.musicPlayer.withoutPattern
         {
             if (state == TURNED_OFF)
             {
+                Console.WriteLine("You need to turn on your device first!");
             }
             else if (state == STAND_BY)
             {
@@ -171,6 +173,7 @@ namespace DesignPatterns.musicPlayer.withoutPattern
         {
             if (state == TURNED_OFF)
             {
+                Console.WriteLine("You need to turn on your device first!");
             }
             else if (state == STAND_BY)
             {
@@ -197,6 +200,7 @@ namespace DesignPatterns.musicPlayer.withoutPattern
         {
             if (state == TURNED_OFF)
             {
+                Console.WriteLine("You need to turn on your device first!");
             }
             else if (state == STAND_BY)
             {
@@ -224,6 +228,7 @@ namespace DesignPatterns.musicPlayer.withoutPattern
         {
             if (state == TURNED_OFF)
             {
+                Console.WriteLine("You need to turn on your device first!");
             }
             else if (state == STAND_BY)
             {
@@ -253,6 +258,7 @@ namespace DesignPatterns.musicPlayer.withoutPattern
         {
             if (state == TURNED_OFF)
             {
+                Console.WriteLine("You need to turn on your device first!");
             }
             else if (state == STAND_BY)
             {
@@ -283,6 +289,7 @@ namespace DesignPatterns.musicPlayer.withoutPattern
         {
             if (state == TURNED_OFF)
             {
+                Console.WriteLine("You need to turn on your device first!");
             }
             else if (state == STAND_BY)
             {
@@ -308,7 +315,6 @@ namespace DesignPatterns.musicPlayer.withoutPattern
                 Console.WriteLine("You need to unlock your device first!");
             }
         }
-
 
         public void setNextSong()
         {

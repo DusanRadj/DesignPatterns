@@ -23,19 +23,40 @@ namespace DesignPatterns.musicPlayer.statePattern.states
             Console.ResetColor();
         }
 
-        public override void turnOff(){ }
+        public override void turnOff()
+        {
+            Console.WriteLine("Device is already turned off!");
+        }
 
-        public override void play(){ }
+        public override void play()
+        {
+            Console.WriteLine("You need to turn on your device first!");
+        }
 
-        public override void pause(){ }
+        public override void pause()
+        {
+            Console.WriteLine("You need to turn on your device first!");
+        }
 
-        public override void stop(){ }
+        public override void stop()
+        {
+            Console.WriteLine("You need to turn on your device first!");
+        }
 
-        public override void lockUnlock(){ }
+        public override void lockUnlock()
+        {
+            Console.WriteLine("You need to turn on your device first!");
+        }
 
-        public override void next(){ }
+        public override void next()
+        {
+            Console.WriteLine("You need to turn on your device first!");
+        }
 
-        public override void previous(){ }
+        public override void previous()
+        {
+            Console.WriteLine("You need to turn on your device first!");
+        }
     
     }
 }

@@ -13,6 +13,7 @@ namespace DesignPatterns.pizzaOrder.pattern.topings
         {
             this.pizza = pizza;
             this.name = pizza.getName() + " + Ketchup";
+            this.Size = pizza.Size;
         }
 
         public override int cost()
@@ -23,6 +24,11 @@ namespace DesignPatterns.pizzaOrder.pattern.topings
         public override String getName()
         {
             return this.name;
+        }
+
+        public override void simulateBaking()
+        {
+            pizza.simulateBaking();
         }
     }
 }

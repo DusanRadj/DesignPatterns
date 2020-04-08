@@ -25,7 +25,7 @@ namespace DesignPatterns.musicPlayer.withoutPattern
 
         private void displayMenu()
         {
-            Console.WriteLine("---------------------------------------                              ");
+            Console.WriteLine("---------------------------------------------------------------------");
             Console.WriteLine("Options:                                                             ");
             Console.WriteLine("1. Turn on                                                           ");
             Console.WriteLine("2. Play                                                              ");
@@ -36,7 +36,7 @@ namespace DesignPatterns.musicPlayer.withoutPattern
             Console.WriteLine("7. Lock/Unlock                                                       ");
             Console.WriteLine("8. Turn off                                                          ");
             Console.WriteLine("0. Exit                                                              ");
-            Console.WriteLine("----------------------------------------                             ");
+            Console.WriteLine("---------------------------------------------------------------------");
         }
 
         private int callAction()
@@ -45,13 +45,12 @@ namespace DesignPatterns.musicPlayer.withoutPattern
             Console.Write("Command: ");
             while (!Int32.TryParse(Console.ReadLine(), out option))
             {
-                Console.WriteLine("----------------------------");
+                Console.WriteLine("---------------------------------------------------------------------");
                 Console.WriteLine("Invalid input, please enter a valid option (from 0 to 8)!");
-                Console.WriteLine("----------------------------");
+                Console.WriteLine("---------------------------------------------------------------------");
                 Console.Write("Command: ");
             }
 
-            //Console.WriteLine("----------------------------");
             switch (option)
             {
                 case 1:
@@ -83,11 +82,11 @@ namespace DesignPatterns.musicPlayer.withoutPattern
                     Console.WriteLine("Exiting from music player app...");
                     break;
                 default:
-                    Console.WriteLine("----------------------------");
+                    Console.WriteLine("---------------------------------------------------------------------");
                     Console.WriteLine("Invalid input, please enter a valid option (from 0 to 8)!");
                     break;
             }
-            Console.WriteLine("----------------------------");
+            Console.WriteLine("---------------------------------------------------------------------");
             return option;
         }
 

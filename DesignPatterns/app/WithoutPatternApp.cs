@@ -28,11 +28,15 @@ namespace DesignPatterns
         {
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine("Choose example to run: ");
                 Console.WriteLine("1. Music player ");
                 Console.WriteLine("2. YouTube ");
                 Console.WriteLine("3. Google account");
                 Console.WriteLine("4. Pizza order");
+                Console.WriteLine();
+                Console.Write("Command: ");
+
                 String option = Console.ReadLine();
 
                 Console.Clear();
@@ -54,9 +58,11 @@ namespace DesignPatterns
                             this.googleAccountApp.startApp();
                             break;
                         }
-                    default:
-                        this.pizzaOrderApp.startApp();
-                        break;
+                    case "4":
+                        {
+                            this.pizzaOrderApp.startApp(); 
+                            break;
+                        }
                 }
             }
         }

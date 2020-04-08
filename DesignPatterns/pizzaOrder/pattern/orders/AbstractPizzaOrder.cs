@@ -4,60 +4,49 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using DesignPatterns.pizzaOrder.pattern.topings;
+using DesignPatterns.pizzaOrder.pattern.pizza_s.factories;
+using DesignPatterns.pizzaOrder.pattern.oven_s;
 
 namespace DesignPatterns.pizzaOrder.pattern
 {
     abstract class AbstractPizzaOrder
     {
         protected AbstractPizza chosenPizza;
-        private PizzaFactory pizzaFactory;
+        private PizzaFactory domesticPizzaFactory;
+        private PizzaFactory regularPizzaFactory;
+        private IOven pizzaOven;
+        private IOven regularOven;
 
-        public AbstractPizzaOrder(PizzaFactory pizzaFactory) 
+        public AbstractPizzaOrder() 
         {
-            this.pizzaFactory = pizzaFactory;
+            this.domesticPizzaFactory = new DomesticPizzaFactory();
+            this.regularPizzaFactory = new RegularPizzaFactory();
+            this.pizzaOven = new PizzaOven();
+            this.regularOven = new RegularOven();
         }
 
         void choosePizza()
         {
             Console.WriteLine("----------------------------------------");
 
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            
-            Console.WriteLine("Type of pizza to order: ");
-            Console.WriteLine("1. Capricossa");
-            Console.WriteLine("2. Vegetariana");
-            Console.WriteLine("3. Margherita");
+            Console.Write("Choose pizza style (Regular/Domestic): ");
+            String option = Console.ReadLine();
+            Console.WriteLine();
 
-            Console.ResetColor();
-            
-            Console.Write("Choose type: ");
-
-            int option = Convert.ToInt32(Console.ReadLine());
-            String pizzaType;
-
-            switch (option)
+            if (option == "Domestic")
             {
-                case 1:
-                    {
-                        pizzaType = "Capricossa";
-                        break;
-                    }
-                case 2:
-                    {
-                        pizzaType = "Vegetariana";
-                        break;
-                    }
-                default:
-                    {
-                        pizzaType = "Margherita";
-                        break;
-                    }
+                this.chosenPizza = this.domesticPizzaFactory.createPizza();
             }
-
-            this.chosenPizza = pizzaFactory.createPizza(pizzaType);
+            else
+            {
+                this.chosenPizza = this.regularPizzaFactory.createPizza();  
+            }
+ 
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("Chosen pizza: " + this.chosenPizza.getName());
+            Console.WriteLine("Chosen pizza: " + this.chosenPizza.ToString());
+            Console.ResetColor();
+            Console.WriteLine("----------------------------------------");
 
         }
 
@@ -104,11 +93,26 @@ namespace DesignPatterns.pizzaOrder.pattern
 
         void bakePizza()
         {
+            Console.Write("Choose oven (Regular/Pizza): ");
+            String option = Console.ReadLine();
             Console.WriteLine();
-            Console.WriteLine("Baking pizza...");
-            Thread.Sleep(3000);
-            Console.WriteLine("Pizza baked!");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            
+            if (option == "Regular")
+            {
+                Console.WriteLine("Chosen oven: " + option);
+                Console.WriteLine();
+                this.regularOven.bake(this.chosenPizza);
+            }
+            else
+            {
+                Console.WriteLine("Chosen oven: " + option);
+                Console.WriteLine();
+                this.pizzaOven.bake(this.chosenPizza);
+            }
+
             Console.WriteLine();
+            Console.ResetColor();    
         }
         
         public abstract void servePizza();

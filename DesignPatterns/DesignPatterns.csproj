@@ -60,6 +60,9 @@
     <Compile Include="musicPlayer\withoutPattern\MusicPlayer.cs" />
     <Compile Include="musicPlayer\withoutPattern\MusicPlayerApp.cs" />
     <Compile Include="app\PatternApp.cs" />
+    <Compile Include="pizzaOrder\pattern\oven%27s\IOven.cs" />
+    <Compile Include="pizzaOrder\pattern\oven%27s\PizzaOven.cs" />
+    <Compile Include="pizzaOrder\pattern\oven%27s\RegularOven.cs" />
     <Compile Include="pizzaOrder\pattern\payment\AbstractHandler.cs" />
     <Compile Include="pizzaOrder\pattern\payment\FiftyBillHandler.cs" />
     <Compile Include="pizzaOrder\pattern\payment\FiveHundredBillHandler.cs" />
@@ -70,8 +73,13 @@
     <Compile Include="pizzaOrder\pattern\orders\AbstractPizzaOrder.cs" />
     <Compile Include="pizzaOrder\pattern\orders\InPlacePizzaOrder.cs" />
     <Compile Include="pizzaOrder\pattern\orders\OnlinePizzaOrder.cs" />
+    <Compile Include="pizzaOrder\pattern\pizza%27s\DomesticWayPizzaCapricossa.cs" />
+    <Compile Include="pizzaOrder\pattern\pizza%27s\DomesticWayPizzaMargherita.cs" />
+    <Compile Include="pizzaOrder\pattern\pizza%27s\DomesticWayPizzaVegetariana.cs" />
+    <Compile Include="pizzaOrder\pattern\pizza%27s\factories\DomesticPizzaFactory.cs" />
+    <Compile Include="pizzaOrder\pattern\pizza%27s\factories\PizzaFactory.cs" />
+    <Compile Include="pizzaOrder\pattern\pizza%27s\factories\RegularPizzaFactory.cs" />
     <Compile Include="pizzaOrder\pattern\pizza%27s\PizzaCapricossa.cs" />
-    <Compile Include="pizzaOrder\pattern\PizzaFactory.cs" />
     <Compile Include="pizzaOrder\pattern\pizza%27s\PizzaMargherita.cs" />
     <Compile Include="pizzaOrder\pattern\PizzaOrderApp.cs" />
     <Compile Include="pizzaOrder\pattern\pizza%27s\PizzaVegetariana.cs" />
@@ -79,6 +87,7 @@
     <Compile Include="pizzaOrder\pattern\topings\KetchupTopping.cs" />
     <Compile Include="pizzaOrder\pattern\topings\MayonaiseTopping.cs" />
     <Compile Include="pizzaOrder\pattern\topings\OlivesTopping.cs" />
+    <Compile Include="pizzaOrder\withoutPattern\BillHandler.cs" />
     <Compile Include="pizzaOrder\withoutPattern\orders\InPlacePizzaOrder.cs" />
     <Compile Include="pizzaOrder\withoutPattern\orders\OnlinePizzaOrder.cs" />
     <Compile Include="pizzaOrder\withoutPattern\pizza%27s\AbstractPizza.cs" />

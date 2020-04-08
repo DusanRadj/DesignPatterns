@@ -10,6 +10,7 @@ namespace DesignPatterns
 {
     class Program
     {
+         
         public static void Menu()
         {
             /*Song s = new Song("River", "Eminem Feat. Ed Sheeran", 216, "River.mp3");
@@ -25,6 +26,9 @@ namespace DesignPatterns
                 Console.WriteLine("Choose way to run: ");
                 Console.WriteLine("1. Pattern");
                 Console.WriteLine("2. Without Pattern");
+                Console.WriteLine("Enter any other value to exit...");
+                Console.WriteLine();
+                Console.Write("Command: ");
                 String option = Console.ReadLine();
 
                 Console.Clear();
@@ -34,10 +38,14 @@ namespace DesignPatterns
                     PatternApp app = new PatternApp();
                     app.menu();
                 }
-                else
+                else if (option == "2")
                 {
                     WithoutPatternApp app = new WithoutPatternApp();
                     app.menu();
+                }
+                else
+                {
+                    Environment.Exit(0);
                 }
             }
             
@@ -48,9 +56,7 @@ namespace DesignPatterns
 
         static void Main(string[] args)
         {
-            
-            
-            Menu();   
+            Menu(); 
         }
     }
 }

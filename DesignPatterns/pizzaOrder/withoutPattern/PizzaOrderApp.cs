@@ -23,6 +23,7 @@ namespace DesignPatterns.pizzaOrder.withoutPattern
             Console.WriteLine("Options:                                                             ");
             Console.WriteLine("1. Start ordering process at In-Place pizza store                    ");
             Console.WriteLine("2. Start ordering process at Online pizza store                      ");
+            Console.WriteLine("2. Refill In-Place pizza store with cash                             ");
             Console.WriteLine("0. Exit                                                              ");
             Console.WriteLine("----------------------------------------                             ");
         }
@@ -49,7 +50,7 @@ namespace DesignPatterns.pizzaOrder.withoutPattern
                     this.onlinePizzaOrder.startOrderingProcess();
                     break;
                 case 3:
-                    this.inPlacePizzaOrder.refill();
+                    this.inPlacePizzaOrder.BillHandler.refill();
                     break;
                 case 0:
                     Console.WriteLine("Exiting from pizza order app...");

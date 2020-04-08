@@ -54,7 +54,7 @@ namespace DesignPatterns.youtubeChannel.observerPattern
             {
                 if (type.Equals("basic"))
                 {
-                    channels.Add(name, new YouTubeChannel(name,new AdvertisingPlaying()));//factory pattern
+                    channels.Add(name, new YouTubeChannel(name,new AdvertisingPlaying()));
                 }
                 else
                 {
@@ -292,23 +292,23 @@ namespace DesignPatterns.youtubeChannel.observerPattern
 
         public void displayMenu()
         {
-            Console.WriteLine("---------------------------------------------------------");
-            Console.WriteLine("Options:                                                 ");
-            Console.WriteLine("1. Create YouTube channel                                ");
-            Console.WriteLine("2. Create video for youtube channel                      ");
-            Console.WriteLine("3. Display all channels                                  ");
-            Console.WriteLine("4. Subscribe channel                                     ");
-            Console.WriteLine("5. Unsubscribe channel                                   ");
-            Console.WriteLine("6. View youtube channel notifications                    ");
-            Console.WriteLine("7. Clear youtube channel notifications                  ");
-            Console.WriteLine("8. Create new playlist                                  ");
-            Console.WriteLine("9. Add video to playlist                                ");
-            Console.WriteLine("10. Display all playlists                                ");
-            Console.WriteLine("11. Play video                                ");
-            Console.WriteLine("12. Play playlist                                ");
-            Console.WriteLine("13. Switch type of channel (add/noAdd)               ");
-            Console.WriteLine("0. Exit                                                  ");
-            Console.WriteLine("---------------------------------------------------------");
+            Console.WriteLine("---------------------------------------------------------------------");
+            Console.WriteLine("Options:                                                             ");
+            Console.WriteLine("1. Create YouTube channel                                            ");
+            Console.WriteLine("2. Create video for youtube channel                                  ");
+            Console.WriteLine("3. Display all channels                                              ");
+            Console.WriteLine("4. Subscribe channel                                                 ");
+            Console.WriteLine("5. Unsubscribe channel                                               ");
+            Console.WriteLine("6. View youtube channel notifications                                ");
+            Console.WriteLine("7. Clear youtube channel notifications                               ");
+            Console.WriteLine("8. Create new playlist                                               ");
+            Console.WriteLine("9. Add video to playlist                                             ");
+            Console.WriteLine("10. Display all playlists                                            ");
+            Console.WriteLine("11. Play video                                                       ");
+            Console.WriteLine("12. Play playlist                                                    ");
+            Console.WriteLine("13. Switch type of channel (add/noAdd)                               ");
+            Console.WriteLine("0. Exit                                                              ");
+            Console.WriteLine("---------------------------------------------------------------------");
         }
 
         public int callAction()
@@ -317,9 +317,9 @@ namespace DesignPatterns.youtubeChannel.observerPattern
             Console.Write("Command: ");
             while (!Int32.TryParse(Console.ReadLine(), out option))
             {
-                Console.WriteLine("----------------------------");
-                Console.WriteLine("Invalid input, please enter a valid option (from 0 to 8)!");
-                Console.WriteLine("----------------------------");
+                Console.WriteLine("---------------------------------------------------------------------");
+                Console.WriteLine("Invalid input, please enter a valid option (from 0 to 13)!");
+                Console.WriteLine("---------------------------------------------------------------------");
                 Console.Write("Command: ");
             }
 
@@ -368,11 +368,11 @@ namespace DesignPatterns.youtubeChannel.observerPattern
                     Console.WriteLine("Exiting from YouTube app...");
                     break;
                 default:
-                    Console.WriteLine("----------------------------");
-                    Console.WriteLine("Invalid input, please enter a valid option (from 0 to 8)!");
+                    Console.WriteLine("---------------------------------------------------------------------");
+                    Console.WriteLine("Invalid input, please enter a valid option (from 0 to 13)!");
                     break;
             }
-            Console.WriteLine("----------------------------");
+            Console.WriteLine("---------------------------------------------------------------------");
             return option;
         }
 

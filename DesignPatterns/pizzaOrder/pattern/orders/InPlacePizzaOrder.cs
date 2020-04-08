@@ -11,8 +11,13 @@ namespace DesignPatterns.pizzaOrder.pattern
     {
         private AbstractHandler billHandler;
 
-        public InPlacePizzaOrder(PizzaFactory pizzaFactory, AbstractHandler billHandler)
-            : base(pizzaFactory)
+        internal AbstractHandler BillHandler
+        {
+            get { return billHandler; }
+            set { billHandler = value; }
+        }
+
+        public InPlacePizzaOrder(AbstractHandler billHandler)
         {
             this.billHandler = billHandler;
         }
@@ -28,7 +33,7 @@ namespace DesignPatterns.pizzaOrder.pattern
 
         public override void chargeBill()
         {
-            Console.WriteLine("Waiter is charging " + this.chosenPizza.getName() + " with total sum of " + this.chosenPizza.cost() + "RSD...");
+            Console.WriteLine("Waiter is charging " + this.chosenPizza.ToString() + " with total sum of " + this.chosenPizza.cost() + "RSD...");
             Console.ResetColor();
             Console.Write("Amount of money you give: ");
 

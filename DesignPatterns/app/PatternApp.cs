@@ -25,6 +25,9 @@ namespace DesignPatterns
                 Console.WriteLine("2. YouTube");
                 Console.WriteLine("3. Google account");
                 Console.WriteLine("4. Pizza ordering");
+                Console.WriteLine();
+                Console.Write("Command: ");
+
                 String option = Console.ReadLine();
 
                 Console.Clear();
@@ -46,7 +49,7 @@ namespace DesignPatterns
                             GoogleAccountApp.getInstance().startApp();
                             break;
                         }
-                    default:
+                    case "4":
                         {
                             PizzaOrderApp.getInstance().startApp();
                             break;
