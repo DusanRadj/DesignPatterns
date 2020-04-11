@@ -17,15 +17,21 @@ namespace DesignPatterns.pizzaOrder.withoutPattern
             this.inPlacePizzaOrder = new InPlacePizzaOrder();
         }
 
+        public void showBillsInHandlers()
+        {
+            Console.Write(this.inPlacePizzaOrder.BillHandler.ToString());
+        }
+
         private void displayMenu()
         {
-            Console.WriteLine("---------------------------------------                              ");
+            Console.WriteLine("---------------------------------------------------------------------");
             Console.WriteLine("Options:                                                             ");
             Console.WriteLine("1. Start ordering process at In-Place pizza store                    ");
             Console.WriteLine("2. Start ordering process at Online pizza store                      ");
-            Console.WriteLine("2. Refill In-Place pizza store with cash                             ");
+            Console.WriteLine("3. Refill In-Place pizza store with cash                             ");
+            Console.WriteLine("4. Show bills in handlers                                            ");
             Console.WriteLine("0. Exit                                                              ");
-            Console.WriteLine("----------------------------------------                             ");
+            Console.WriteLine("---------------------------------------------------------------------");
         }
 
 
@@ -35,9 +41,9 @@ namespace DesignPatterns.pizzaOrder.withoutPattern
             Console.Write("Command: ");
             while (!Int32.TryParse(Console.ReadLine(), out option))
             {
-                Console.WriteLine("----------------------------");
-                Console.WriteLine("Invalid input, please enter a valid option (from 0 to 2)!");
-                Console.WriteLine("----------------------------");
+                Console.WriteLine("---------------------------------------------------------------------");
+                Console.WriteLine("Invalid input, please enter a valid option (from 0 to 4)!");
+                Console.WriteLine("---------------------------------------------------------------------");
                 Console.Write("Command: ");
             }
 
@@ -52,15 +58,18 @@ namespace DesignPatterns.pizzaOrder.withoutPattern
                 case 3:
                     this.inPlacePizzaOrder.BillHandler.refill();
                     break;
+                case 4:
+                    this.showBillsInHandlers();
+                    break;
                 case 0:
                     Console.WriteLine("Exiting from pizza order app...");
                     break;
                 default:
-                    Console.WriteLine("----------------------------");
-                    Console.WriteLine("Invalid input, please enter a valid option (from 0 to 2)!");
+                    Console.WriteLine("---------------------------------------------------------------------");
+                    Console.WriteLine("Invalid input, please enter a valid option (from 0 to 4)!");
                     break;
             }
-            Console.WriteLine("----------------------------");
+            Console.WriteLine("---------------------------------------------------------------------");
             return option;
         }
 

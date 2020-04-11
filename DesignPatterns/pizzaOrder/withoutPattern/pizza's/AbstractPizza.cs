@@ -9,11 +9,15 @@ namespace DesignPatterns.pizzaOrder.withoutPattern.pizza_s
     {
 
         protected String name = "No name";
+        protected int size = 0;
         protected bool hasKetchup = false;
         protected bool hasMayonaise = false;
         protected bool hasOlives = false;
 
         public abstract int cost();
+
+        public abstract void simulateBakingInPizzaOven();
+        public abstract void simulateBakingInRegularOven();
 
         public String getName()
         {
@@ -34,6 +38,7 @@ namespace DesignPatterns.pizzaOrder.withoutPattern.pizza_s
         {
             this.hasOlives = true;
         }
+
 
     }
 }

@@ -6,18 +6,17 @@ using System.Threading;
 
 namespace DesignPatterns.pizzaOrder.withoutPattern.pizza_s
 {
-    class PizzaVegetariana : AbstractPizza
+    class DomesticPizzaVegetariana : AbstractPizza
     {
-
-        public PizzaVegetariana()
+        public DomesticPizzaVegetariana(int size)
         {
-            this.name = "Vegetariana";
-            this.size = 40;
+            this.name = "Domestic Vegetariana";
+            this.size = size;
         }
 
         public override int cost()
         {
-            int cost = 600;
+            int cost = 800;
             if (this.hasKetchup)
             {
                 cost += 30;
@@ -27,7 +26,6 @@ namespace DesignPatterns.pizzaOrder.withoutPattern.pizza_s
             {
                 cost += 70;
             }
-
             if (this.hasOlives)
             {
                 cost += 90;
@@ -66,11 +64,10 @@ namespace DesignPatterns.pizzaOrder.withoutPattern.pizza_s
             Console.SetCursorPosition(0, Console.CursorTop - 15);
 
             //simulate pizza start
-
             double radius = 4;
             double thickness = 0.4;
             Console.ForegroundColor = ConsoleColor.Yellow;
-            char symbol = '.';
+            char symbol = '*';
 
             Console.WriteLine();
             double rIn = radius - thickness;
@@ -79,12 +76,14 @@ namespace DesignPatterns.pizzaOrder.withoutPattern.pizza_s
             List<ConsoleColor> colors = new List<ConsoleColor>();
             colors.Add(ConsoleColor.White);
             colors.Add(ConsoleColor.Yellow);
+            colors.Add(ConsoleColor.DarkYellow);
+
             Console.SetCursorPosition(0, Console.CursorTop + 10);
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
             {
                 Console.SetCursorPosition(0, Console.CursorTop - 10);
                 if (i != 0)
-                    Thread.Sleep(3000);
+                    Thread.Sleep(1500);
 
                 for (double y = -radius; y <= radius; ++y)
                 {
@@ -93,7 +92,7 @@ namespace DesignPatterns.pizzaOrder.withoutPattern.pizza_s
                         double value = x * x + y * y;
                         if (value >= rIn * rIn && value <= rOut * rOut)
                         {
-                            Console.BackgroundColor = ConsoleColor.DarkYellow;
+                            Console.BackgroundColor = ConsoleColor.DarkRed;
                             Console.Write(symbol);
                             Console.BackgroundColor = ConsoleColor.Black;
                         }
@@ -118,7 +117,6 @@ namespace DesignPatterns.pizzaOrder.withoutPattern.pizza_s
 
                 Console.WriteLine();
             }
-
             //simulate pizza end
 
             Console.SetCursorPosition(0, Console.CursorTop + 4);
@@ -164,11 +162,10 @@ namespace DesignPatterns.pizzaOrder.withoutPattern.pizza_s
             Console.SetCursorPosition(0, Console.CursorTop - 15);
 
             //simulate pizza start
-
             double radius = 4;
             double thickness = 0.4;
             Console.ForegroundColor = ConsoleColor.Yellow;
-            char symbol = '.';
+            char symbol = '*';
 
             Console.WriteLine();
             double rIn = radius - thickness;
@@ -177,12 +174,14 @@ namespace DesignPatterns.pizzaOrder.withoutPattern.pizza_s
             List<ConsoleColor> colors = new List<ConsoleColor>();
             colors.Add(ConsoleColor.White);
             colors.Add(ConsoleColor.Yellow);
+            colors.Add(ConsoleColor.DarkYellow);
+
             Console.SetCursorPosition(0, Console.CursorTop + 10);
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
             {
                 Console.SetCursorPosition(0, Console.CursorTop - 10);
                 if (i != 0)
-                    Thread.Sleep(3000);
+                    Thread.Sleep(1500);
 
                 for (double y = -radius; y <= radius; ++y)
                 {
@@ -191,7 +190,7 @@ namespace DesignPatterns.pizzaOrder.withoutPattern.pizza_s
                         double value = x * x + y * y;
                         if (value >= rIn * rIn && value <= rOut * rOut)
                         {
-                            Console.BackgroundColor = ConsoleColor.DarkYellow;
+                            Console.BackgroundColor = ConsoleColor.DarkRed;
                             Console.Write(symbol);
                             Console.BackgroundColor = ConsoleColor.Black;
                         }
@@ -216,8 +215,8 @@ namespace DesignPatterns.pizzaOrder.withoutPattern.pizza_s
 
                 Console.WriteLine();
             }
-
             //simulate pizza end
+
 
             Console.SetCursorPosition(0, Console.CursorTop + 4);
             Console.WriteLine();

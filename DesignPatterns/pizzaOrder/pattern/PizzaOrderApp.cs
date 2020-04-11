@@ -82,7 +82,7 @@ namespace DesignPatterns.pizzaOrder.pattern
 
         private void displayMenu()
         {
-            Console.WriteLine("---------------------------------------                              ");
+            Console.WriteLine("---------------------------------------------------------------------");
             Console.WriteLine("Options:                                                             ");
             Console.WriteLine("1. Change pizza store                                                ");
             Console.WriteLine("2. Start ordering process                                            ");
@@ -90,7 +90,7 @@ namespace DesignPatterns.pizzaOrder.pattern
             Console.WriteLine("4. Demonstrate adding bill handler in real time                      ");
             Console.WriteLine("5. Show bills in handlers                                            ");
             Console.WriteLine("0. Exit                                                              ");
-            Console.WriteLine("----------------------------------------                             ");
+            Console.WriteLine("---------------------------------------------------------------------");
         }
 
 
@@ -100,9 +100,9 @@ namespace DesignPatterns.pizzaOrder.pattern
             Console.Write("Command: ");
             while (!Int32.TryParse(Console.ReadLine(), out option))
             {
-                Console.WriteLine("----------------------------");
+                Console.WriteLine("---------------------------------------------------------------------");
                 Console.WriteLine("Invalid input, please enter a valid option (from 0 to 5)!");
-                Console.WriteLine("----------------------------");
+                Console.WriteLine("---------------------------------------------------------------------");
                 Console.Write("Command: ");
             }
 
@@ -127,11 +127,11 @@ namespace DesignPatterns.pizzaOrder.pattern
                     Console.WriteLine("Exiting from pizza order app...");
                     break;
                 default:
-                    Console.WriteLine("----------------------------");
+                    Console.WriteLine("---------------------------------------------------------------------");
                     Console.WriteLine("Invalid input, please enter a valid option (from 0 to 5)!");
                     break;
             }
-            Console.WriteLine("----------------------------");
+            Console.WriteLine("---------------------------------------------------------------------");
             return option;
         }
 

@@ -73,9 +73,9 @@
     <Compile Include="pizzaOrder\pattern\payment\TenBillHandler.cs" />
     <Compile Include="pizzaOrder\pattern\payment\ThousandBillHandler.cs" />
     <Compile Include="pizzaOrder\pattern\pizza%27s\AbstractPizza.cs" />
-    <Compile Include="pizzaOrder\pattern\orders\AbstractPizzaStore.cs" />
-    <Compile Include="pizzaOrder\pattern\orders\InPlacePizzaStore.cs" />
-    <Compile Include="pizzaOrder\pattern\orders\OnlinePizzaStore.cs" />
+    <Compile Include="pizzaOrder\pattern\stores\AbstractPizzaStore.cs" />
+    <Compile Include="pizzaOrder\pattern\stores\InPlacePizzaStore.cs" />
+    <Compile Include="pizzaOrder\pattern\stores\OnlinePizzaStore.cs" />
     <Compile Include="pizzaOrder\pattern\pizza%27s\DomesticWayPizzaCapricossa.cs" />
     <Compile Include="pizzaOrder\pattern\pizza%27s\DomesticWayPizzaMargherita.cs" />
     <Compile Include="pizzaOrder\pattern\pizza%27s\DomesticWayPizzaVegetariana.cs" />
@@ -94,6 +94,9 @@
     <Compile Include="pizzaOrder\withoutPattern\orders\InPlacePizzaOrder.cs" />
     <Compile Include="pizzaOrder\withoutPattern\orders\OnlinePizzaOrder.cs" />
     <Compile Include="pizzaOrder\withoutPattern\pizza%27s\AbstractPizza.cs" />
+    <Compile Include="pizzaOrder\withoutPattern\pizza%27s\DomesticPizzaCapricossa.cs" />
+    <Compile Include="pizzaOrder\withoutPattern\pizza%27s\DomesticPizzaMargherita.cs" />
+    <Compile Include="pizzaOrder\withoutPattern\pizza%27s\DomesticPizzaVegetariana.cs" />
     <Compile Include="pizzaOrder\withoutPattern\pizza%27s\PizzaCapricossa.cs" />
     <Compile Include="pizzaOrder\withoutPattern\pizza%27s\PizzaMargherita.cs" />
     <Compile Include="pizzaOrder\withoutPattern\pizza%27s\PizzaVegetariana.cs" />

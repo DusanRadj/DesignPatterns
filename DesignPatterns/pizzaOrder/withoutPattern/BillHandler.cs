@@ -41,30 +41,35 @@ namespace DesignPatterns.pizzaOrder.withoutPattern
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write("1000 ");
                 change -= 1000;
+                this.numOfHundredBills--;
             }
             while (change / 500 >= 1 && this.numOfFiveHundredBills > 0)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("500 ");
                 change -= 500;
+                this.numOfFiveHundredBills--;
             }
             while (change / 100 >= 1 && this.numOfHundredBills > 0)
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.Write("100 ");
                 change -= 100;
+                this.numOfHundredBills--;
             }
             while (change / 50 >= 1 && this.numOfFiftyBills > 0)
             {
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write("50 ");
                 change -= 50;
+                this.numOfFiftyBills--;
             }
             while (change / 10 >= 1 && this.numOfTenBills > 0)
             {
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write("10 ");
                 change -= 10;
+                this.numOfTenBills--;
             }
 
         }
@@ -110,6 +115,23 @@ namespace DesignPatterns.pizzaOrder.withoutPattern
                         break;
                     }
             }
+        }
+
+
+        public override string ToString()
+        {
+            string retVal = "Amount of 1000 bills in handler is: " + this.numOfThousandBills;
+            retVal += System.Environment.NewLine;
+            retVal += "Amount of 500 bills in handler is: " + this.numOfFiveHundredBills;
+            retVal += System.Environment.NewLine;
+            retVal += "Amount of 100 bills in handler is: " + this.numOfHundredBills;
+            retVal += System.Environment.NewLine;
+            retVal += "Amount of 50 bills in handler is: " + this.numOfFiftyBills;
+            retVal += System.Environment.NewLine;
+            retVal += "Amount of 10 bills in handler is: " + this.numOfTenBills;
+            retVal += System.Environment.NewLine;
+
+            return retVal;
         }
     }
 }

@@ -34,6 +34,9 @@ namespace DesignPatterns.pizzaOrder.withoutPattern.orders
             Console.WriteLine("1. Capricossa");
             Console.WriteLine("2. Vegetariana");
             Console.WriteLine("3. Margherita");
+            Console.WriteLine("4. Domestic Capricossa");
+            Console.WriteLine("5. Domestic Vegetariana");
+            Console.WriteLine("6. Domestic Margherita");
             Console.ResetColor();
             Console.Write("Choose type: ");
 
@@ -51,9 +54,33 @@ namespace DesignPatterns.pizzaOrder.withoutPattern.orders
                         this.chosenPizza = new PizzaVegetariana();
                         break;
                     }
-                default:
+                case 3:
                     {
                         this.chosenPizza = new PizzaMargherita();
+                        break;
+                    }
+                case 4:
+                    {
+                        Console.Write("Choose size: ");
+                        int size = Convert.ToInt32(Console.ReadLine());
+
+                        this.chosenPizza = new DomesticPizzaCapricossa(size);
+                        break;
+                    }
+                case 5:
+                    {
+                        Console.Write("Choose size: ");
+                        int size = Convert.ToInt32(Console.ReadLine());
+
+                        this.chosenPizza = new DomesticPizzaVegetariana(size);
+                        break;
+                    }
+                default:
+                    {
+                        Console.Write("Choose size: ");
+                        int size = Convert.ToInt32(Console.ReadLine());
+
+                        this.chosenPizza = new DomesticPizzaMargherita(size);
                         break;
                     }
             }
@@ -63,11 +90,25 @@ namespace DesignPatterns.pizzaOrder.withoutPattern.orders
             Console.WriteLine("Chosen pizza: " + this.chosenPizza.getName());
 
             //bake pizza
+            Console.Write("Choose oven (1.Regular / 2.Pizza): ");
+            String oven = Console.ReadLine();
             Console.WriteLine();
-            Console.WriteLine("Baking pizza...");
-            Thread.Sleep(3000);
-            Console.WriteLine("Pizza baked!");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+
+            Console.WriteLine("Chosen oven: " + option);
             Console.WriteLine();
+
+            if (oven == "1")
+            {
+                this.chosenPizza.simulateBakingInRegularOven();
+            }
+            else
+            {
+                this.chosenPizza.simulateBakingInPizzaOven();
+            }
+
+            Console.WriteLine();
+            Console.ResetColor();  
 
             //add toppings
             Console.WriteLine("Toppings: ");

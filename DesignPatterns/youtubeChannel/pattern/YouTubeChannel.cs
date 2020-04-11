@@ -155,6 +155,30 @@ namespace DesignPatterns.youtubeChannel.observerPattern.model
             }
         }
 
+        public void switchTypeOfChannel()
+        {
+            if (this.PlayAlghoritm.GetType() == typeof(NoAdvertisingPlaying))
+            {
+                this.PlayAlghoritm = new AdvertisingPlaying();
+                foreach (KeyValuePair<String, Playlist> playlist in this.Playlists)
+                {
+                    playlist.Value.PlayAlghoritm = new AdvertisingPlaying();
+                }
+
+                Console.WriteLine("YouTube channel" + this.name + " has switch from no advertising, to advertising type");
+            }
+            else
+            {
+                this.PlayAlghoritm = new NoAdvertisingPlaying();
+                foreach (KeyValuePair<String, Playlist> playlist in this.Playlists)
+                {
+                    playlist.Value.PlayAlghoritm = new NoAdvertisingPlaying();
+                }
+
+                Console.WriteLine("YouTube channel" + this.name + " has switch from advertising, to no advertising type");
+            }
+        }
+
         private String createNewLink()
         {
             String link = "www.youtube.com/" + this.Name + "/";

@@ -30,17 +30,17 @@ namespace DesignPatterns.pizzaOrder.pattern
             Console.WriteLine("----------------------------------------");
 
             //code for choosing factory, and based on factory, createing pizza
-            Console.Write("Choose pizza style (Regular/Domestic): ");
+            Console.Write("Choose pizza style (1.Regular / 2.Domestic): ");
             String option = Console.ReadLine();
             Console.WriteLine();
 
-            if (option == "Domestic")
+            if (option == "1")
+            {
+                this.chosenPizza = this.regularPizzaFactory.createPizza();
+            }
+            else 
             {
                 this.chosenPizza = this.domesticPizzaFactory.createPizza();
-            }
-            else
-            {
-                this.chosenPizza = this.regularPizzaFactory.createPizza();  
             }
  
             Console.WriteLine();
@@ -94,21 +94,20 @@ namespace DesignPatterns.pizzaOrder.pattern
 
         void bakePizza()
         {
-            Console.Write("Choose oven (Regular/Pizza): ");
+            Console.Write("Choose oven (1.Regular / 2.Pizza): ");
             String option = Console.ReadLine();
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            
-            if (option == "Regular")
-            {
-                Console.WriteLine("Chosen oven: " + option);
-                Console.WriteLine();
+
+            Console.WriteLine("Chosen oven: " + option);
+            Console.WriteLine();
+
+            if (option == "1")
+            {    
                 this.regularOven.bake(this.chosenPizza);
             }
             else
             {
-                Console.WriteLine("Chosen oven: " + option);
-                Console.WriteLine();
                 this.pizzaOven.bake(this.chosenPizza);
             }
 

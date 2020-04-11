@@ -94,7 +94,6 @@ namespace DesignPatterns.youtubeChannel.observerPattern
                 Console.WriteLine("Your youtube channel name is incorrect!");
             }
         }
-
         
         public void unsubscribeChannel()
         {
@@ -122,8 +121,7 @@ namespace DesignPatterns.youtubeChannel.observerPattern
                 Console.WriteLine("Your youtube channel name is incorrect!");
             }
         }
-
-        
+     
         public void createNewVideo()
         {
             Console.WriteLine("Enter youtube channel: ");
@@ -162,7 +160,6 @@ namespace DesignPatterns.youtubeChannel.observerPattern
                 Console.WriteLine("Youtube channel name does not exist!");
             }
         }
-
         
         public void clearYouTubeChannelNotifications()
         {
@@ -262,27 +259,7 @@ namespace DesignPatterns.youtubeChannel.observerPattern
             try
             {
                 YouTubeChannel channel = channels[channelName];
-
-                if (channel.PlayAlghoritm.GetType() == typeof(NoAdvertisingPlaying))
-                {
-                    channel.PlayAlghoritm = new AdvertisingPlaying();
-                    foreach (KeyValuePair<String, Playlist> playlist in channel.Playlists)
-                    {
-                        playlist.Value.PlayAlghoritm = new AdvertisingPlaying();
-                    }
-
-                    Console.WriteLine("YouTube channel" + channelName + " has switch from no advertising, to advertising type");
-                }
-                else
-                {
-                    channel.PlayAlghoritm = new NoAdvertisingPlaying();
-                    foreach (KeyValuePair<String, Playlist> playlist in channel.Playlists)
-                    {
-                        playlist.Value.PlayAlghoritm = new NoAdvertisingPlaying();
-                    }
-
-                    Console.WriteLine("YouTube channel" + channelName + " has switch from advertising, to no advertising type");
-                }
+                channel.switchTypeOfChannel();
             }
             catch (KeyNotFoundException)
             {

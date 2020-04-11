@@ -24,7 +24,8 @@ namespace DesignPatterns.musicPlayer.statePattern.model
         private Timer timer;
 
         private List<Song> songs;
-        
+        private bool isWorking = true;
+
         public MusicPlayer()
         {
             this.turnedOffState = new TurnedOffState(this);
@@ -55,7 +56,7 @@ namespace DesignPatterns.musicPlayer.statePattern.model
         }
 
         public void play()
-        {
+        {   
             this.currentState.play();
         }
 
@@ -157,17 +158,31 @@ namespace DesignPatterns.musicPlayer.statePattern.model
             if (this.myMediaPlayer.GetType() == typeof(MediaPlayerAdapter))
             {
                 this.myMediaPlayer = new NAudioAdapter();
+                this.isWorking = true;
                 Console.WriteLine("Switching to NAudio...");
             }
             else
             {
                 this.myMediaPlayer = new MediaPlayerAdapter();
+                this.isWorking = true;
                 Console.WriteLine("Switching to MediaPlayer...");
             }
         }
 
+        public void causeBug()
+        {
+            this.isWorking = false;
+        }
+            
+
         #region properties
 
+        public bool IsWorking
+        {
+            get { return isWorking; }
+            set { isWorking = value; }
+        }
+        
         public Timer Timer
         {
             get { return timer; }

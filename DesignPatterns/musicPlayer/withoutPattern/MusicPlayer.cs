@@ -19,35 +19,12 @@ namespace DesignPatterns.musicPlayer.withoutPattern
         private int state = TURNED_OFF;
 
         private int currentSongIndex;
-        public int CurrentSongIndex
-        {
-            get { return currentSongIndex; }
-            set { currentSongIndex = value; }
-        }
-
         private int pausedAt;
-        public int PausedAt
-        {
-            get { return pausedAt; }
-            set { pausedAt = value; }
-        }
-
         private List<Song> songs;
-        public List<Song> Songs
-        {
-            get { return songs; }
-            set { songs = value; }
-        }
-
         private MediaPlayer.MediaPlayer mediaPlayer;
-        public MediaPlayer.MediaPlayer MediaPlayer
-        {
-            get { return mediaPlayer; }
-            set { mediaPlayer = value; }
-        }
 
         private System.Timers.Timer timer;
-
+        private bool isWorking = true;
 
         public MusicPlayer()
         {
@@ -60,7 +37,6 @@ namespace DesignPatterns.musicPlayer.withoutPattern
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
         }
-
 
         public void turnOn()
         {
@@ -129,6 +105,12 @@ namespace DesignPatterns.musicPlayer.withoutPattern
 
         public void play()
         {
+            if (!this.isWorking)
+            {
+                Console.WriteLine("There is an error in media player!");
+                return;
+            }
+
             if (state == TURNED_OFF)
             {
                 Console.WriteLine("You need to turn on your device first!");
@@ -381,5 +363,41 @@ namespace DesignPatterns.musicPlayer.withoutPattern
 
             return retVal;
         }
+
+        public void causeBug()
+        {
+            this.isWorking = false;
+        }
+
+        #region properties
+
+        public bool IsWorking
+        {
+            get { return isWorking; }
+            set { isWorking = value; }
+        }
+
+        public MediaPlayer.MediaPlayer MediaPlayer
+        {
+            get { return mediaPlayer; }
+            set { mediaPlayer = value; }
+        }
+        public List<Song> Songs
+        {
+            get { return songs; }
+            set { songs = value; }
+        }
+        public int PausedAt
+        {
+            get { return pausedAt; }
+            set { pausedAt = value; }
+        }
+        public int CurrentSongIndex
+        {
+            get { return currentSongIndex; }
+            set { currentSongIndex = value; }
+        }
+
+        #endregion
     }
 }

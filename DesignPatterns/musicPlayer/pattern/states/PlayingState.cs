@@ -13,6 +13,12 @@ namespace DesignPatterns.musicPlayer.statePattern.states
 
         public override void play()
         {
+            if (!musicPlayer.IsWorking)
+            {
+                Console.WriteLine("There is an error in media player!");
+                return;
+            }
+
             musicPlayer.stopTimerAndSound();
             
             Song song = musicPlayer.Songs[musicPlayer.CurrentSongIndex];
