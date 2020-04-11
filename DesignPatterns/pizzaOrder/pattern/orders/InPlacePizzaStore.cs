@@ -7,7 +7,7 @@ using DesignPatterns.pizzaOrder.pattern.payment;
 
 namespace DesignPatterns.pizzaOrder.pattern
 {
-    class InPlacePizzaOrder : AbstractPizzaOrder
+    class InPlacePizzaStore : AbstractPizzaStore
     {
         private AbstractHandler billHandler;
 
@@ -17,7 +17,7 @@ namespace DesignPatterns.pizzaOrder.pattern
             set { billHandler = value; }
         }
 
-        public InPlacePizzaOrder(AbstractHandler billHandler)
+        public InPlacePizzaStore(AbstractHandler billHandler)
         {
             this.billHandler = billHandler;
         }

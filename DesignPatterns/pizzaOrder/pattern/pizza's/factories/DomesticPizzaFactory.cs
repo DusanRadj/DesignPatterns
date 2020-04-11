@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DesignPatterns.pizzaOrder.pattern.pizza_s.factories
 {
-    class DomesticPizzaFactory : PizzaFactory
+    class DomesticPizzaFactory : IPizzaFactory
     {
         private void showMenu()
         {
@@ -16,7 +16,6 @@ namespace DesignPatterns.pizzaOrder.pattern.pizza_s.factories
             Console.WriteLine("3. Domestic Margherita");
             Console.WriteLine();
             Console.ResetColor();
-
         }
 
         private String getTypeOfPizza()

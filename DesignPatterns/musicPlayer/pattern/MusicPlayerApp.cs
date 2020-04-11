@@ -46,6 +46,7 @@ namespace DesignPatterns.musicPlayer.statePattern
             Console.WriteLine("6. Previous                                                          ");
             Console.WriteLine("7. Lock/Unlock                                                       ");
             Console.WriteLine("8. Turn off                                                          ");
+            Console.WriteLine("9. Switch to another media player type                               ");
             Console.WriteLine("0. Exit                                                              ");
             Console.WriteLine("---------------------------------------------------------------------");
         }
@@ -57,7 +58,7 @@ namespace DesignPatterns.musicPlayer.statePattern
             while (!Int32.TryParse(Console.ReadLine(), out option))
             {
                 Console.WriteLine("---------------------------------------------------------------------");
-                Console.WriteLine("Invalid input, please enter a valid option (from 0 to 8)!");
+                Console.WriteLine("Invalid input, please enter a valid option (from 0 to 9)!            ");
                 Console.WriteLine("---------------------------------------------------------------------");
                 Console.Write("Command: ");
             }
@@ -88,13 +89,16 @@ namespace DesignPatterns.musicPlayer.statePattern
                 case 8:
                     musicPlayer.turnOff();
                     break;
+                case 9:
+                    musicPlayer.switchToAnotherPlayer();
+                    break;
                 case 0:
                     musicPlayer.turnOff();
                     Console.WriteLine("Exiting from music player app...");
                     break;
                 default:
                     Console.WriteLine("---------------------------------------------------------------------");
-                    Console.WriteLine("Invalid input, please enter a valid option (from 0 to 8)!");
+                    Console.WriteLine("Invalid input, please enter a valid option (from 0 to 9)!            ");
                     break;
             }
             Console.WriteLine("---------------------------------------------------------------------");

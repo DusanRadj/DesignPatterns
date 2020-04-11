@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DesignPatterns.musicPlayer.statePattern.states;
+using DesignPatterns.musicPlayer.pattern.adapter;
 using System.Timers;
 
 namespace DesignPatterns.musicPlayer.statePattern.model
@@ -19,7 +20,7 @@ namespace DesignPatterns.musicPlayer.statePattern.model
         private int currentSongIndex;
         private int pausedAt;
 
-        private MediaPlayer.MediaPlayer mediaPlayer;
+        private IMyMediaPlayer myMediaPlayer;
         private Timer timer;
 
         private List<Song> songs;
@@ -35,7 +36,7 @@ namespace DesignPatterns.musicPlayer.statePattern.model
 
             this.currentSongIndex = 0;
             this.songs = new List<Song>();
-            this.mediaPlayer = new MediaPlayer.MediaPlayer();
+            this.myMediaPlayer = new NAudioAdapter();
 
             timer = new Timer();
             timer.Interval = 1000;
@@ -109,7 +110,7 @@ namespace DesignPatterns.musicPlayer.statePattern.model
 
         public void stopTimerAndSound()
         {
-            this.mediaPlayer.Stop();
+            this.myMediaPlayer.stop();
             timer.Enabled = false; 
             this.pausedAt = 0;
         }
@@ -151,6 +152,19 @@ namespace DesignPatterns.musicPlayer.statePattern.model
             return retVal;
         }
 
+        public void switchToAnotherPlayer()
+        {
+            if (this.myMediaPlayer.GetType() == typeof(MediaPlayerAdapter))
+            {
+                this.myMediaPlayer = new NAudioAdapter();
+                Console.WriteLine("Switching to NAudio...");
+            }
+            else
+            {
+                this.myMediaPlayer = new MediaPlayerAdapter();
+                Console.WriteLine("Switching to MediaPlayer...");
+            }
+        }
 
         #region properties
 
@@ -159,10 +173,10 @@ namespace DesignPatterns.musicPlayer.statePattern.model
             get { return timer; }
             set { timer = value; }
         }
-        public MediaPlayer.MediaPlayer MediaPlayer
+        public IMyMediaPlayer MyMediaPlayer
         {
-            get { return mediaPlayer; }
-            set { mediaPlayer = value; }
+            get { return myMediaPlayer; }
+            set { myMediaPlayer = value; }
         }
         public List<Song> Songs
         {

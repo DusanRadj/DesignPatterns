@@ -48,6 +48,9 @@
   <ItemGroup>
     <Compile Include="googleAccount\pattern\GoogleAccountApp.cs" />
     <Compile Include="googleAccount\withoutPattern\GoogleAccountApp.cs" />
+    <Compile Include="musicPlayer\pattern\adapter\IMyMediaPlayer.cs" />
+    <Compile Include="musicPlayer\pattern\adapter\MediaPlayerAdapter.cs" />
+    <Compile Include="musicPlayer\pattern\adapter\NAudioAdapter.cs" />
     <Compile Include="musicPlayer\pattern\MusicPlayer.cs" />
     <Compile Include="musicPlayer\common\Song.cs" />
     <Compile Include="musicPlayer\pattern\MusicPlayerApp.cs" />
@@ -70,14 +73,14 @@
     <Compile Include="pizzaOrder\pattern\payment\TenBillHandler.cs" />
     <Compile Include="pizzaOrder\pattern\payment\ThousandBillHandler.cs" />
     <Compile Include="pizzaOrder\pattern\pizza%27s\AbstractPizza.cs" />
-    <Compile Include="pizzaOrder\pattern\orders\AbstractPizzaOrder.cs" />
-    <Compile Include="pizzaOrder\pattern\orders\InPlacePizzaOrder.cs" />
-    <Compile Include="pizzaOrder\pattern\orders\OnlinePizzaOrder.cs" />
+    <Compile Include="pizzaOrder\pattern\orders\AbstractPizzaStore.cs" />
+    <Compile Include="pizzaOrder\pattern\orders\InPlacePizzaStore.cs" />
+    <Compile Include="pizzaOrder\pattern\orders\OnlinePizzaStore.cs" />
     <Compile Include="pizzaOrder\pattern\pizza%27s\DomesticWayPizzaCapricossa.cs" />
     <Compile Include="pizzaOrder\pattern\pizza%27s\DomesticWayPizzaMargherita.cs" />
     <Compile Include="pizzaOrder\pattern\pizza%27s\DomesticWayPizzaVegetariana.cs" />
     <Compile Include="pizzaOrder\pattern\pizza%27s\factories\DomesticPizzaFactory.cs" />
-    <Compile Include="pizzaOrder\pattern\pizza%27s\factories\PizzaFactory.cs" />
+    <Compile Include="pizzaOrder\pattern\pizza%27s\factories\IPizzaFactory.cs" />
     <Compile Include="pizzaOrder\pattern\pizza%27s\factories\RegularPizzaFactory.cs" />
     <Compile Include="pizzaOrder\pattern\pizza%27s\PizzaCapricossa.cs" />
     <Compile Include="pizzaOrder\pattern\pizza%27s\PizzaMargherita.cs" />

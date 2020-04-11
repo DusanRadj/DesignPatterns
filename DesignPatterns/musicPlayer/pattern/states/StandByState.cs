@@ -23,8 +23,7 @@ namespace DesignPatterns.musicPlayer.statePattern.states
             Console.WriteLine("STATE CHANGED : STANDBY_STATE ---> PLAYING_STATE");
             Console.ResetColor();
             
-            musicPlayer.MediaPlayer.FileName = song.Path;
-            musicPlayer.MediaPlayer.Play();
+            musicPlayer.MyMediaPlayer.play(song.Path);
         }
 
         public override void pause()

@@ -8,8 +8,6 @@ namespace DesignPatterns.pizzaOrder.pattern.oven_s
 {
     class RegularOven : IOven
     {
-        //private int remainingTime = 7000;
-
         public RegularOven(){}
 
         public void bake(AbstractPizza pizza)

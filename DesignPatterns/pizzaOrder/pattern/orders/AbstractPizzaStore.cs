@@ -9,15 +9,15 @@ using DesignPatterns.pizzaOrder.pattern.oven_s;
 
 namespace DesignPatterns.pizzaOrder.pattern
 {
-    abstract class AbstractPizzaOrder
+    abstract class AbstractPizzaStore
     {
         protected AbstractPizza chosenPizza;
-        private PizzaFactory domesticPizzaFactory;
-        private PizzaFactory regularPizzaFactory;
+        private IPizzaFactory domesticPizzaFactory;
+        private IPizzaFactory regularPizzaFactory;
         private IOven pizzaOven;
         private IOven regularOven;
 
-        public AbstractPizzaOrder() 
+        public AbstractPizzaStore() 
         {
             this.domesticPizzaFactory = new DomesticPizzaFactory();
             this.regularPizzaFactory = new RegularPizzaFactory();
@@ -29,6 +29,7 @@ namespace DesignPatterns.pizzaOrder.pattern
         {
             Console.WriteLine("----------------------------------------");
 
+            //code for choosing factory, and based on factory, createing pizza
             Console.Write("Choose pizza style (Regular/Domestic): ");
             String option = Console.ReadLine();
             Console.WriteLine();

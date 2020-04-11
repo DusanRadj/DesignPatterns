@@ -15,7 +15,7 @@ namespace DesignPatterns.musicPlayer.statePattern.states
         {
             Song song = musicPlayer.Songs[musicPlayer.CurrentSongIndex];
             Console.WriteLine(song.Artist + " - " + song.Title + " is resuming from " + musicPlayer.PausedAt + " seconds ...");
-            musicPlayer.MediaPlayer.Play();
+            musicPlayer.MyMediaPlayer.resume();
             musicPlayer.Timer.Enabled = true;
             musicPlayer.CurrentState = musicPlayer.playingState;
             Console.ForegroundColor = ConsoleColor.DarkYellow;

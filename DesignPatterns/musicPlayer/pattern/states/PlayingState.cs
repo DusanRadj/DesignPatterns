@@ -19,13 +19,12 @@ namespace DesignPatterns.musicPlayer.statePattern.states
             Console.WriteLine(song.Artist + " - " + song.Title + " is now playing ...");
             musicPlayer.Timer.Enabled = true;
 
-            musicPlayer.MediaPlayer.FileName = song.Path;
-            musicPlayer.MediaPlayer.Play();
+            musicPlayer.MyMediaPlayer.play(song.Path);
         }
 
         public override void pause()
         {
-            musicPlayer.MediaPlayer.Pause();
+            musicPlayer.MyMediaPlayer.pause();
             musicPlayer.Timer.Enabled = false;
             Console.WriteLine("Song paused on " + musicPlayer.PausedAt + " seconds ...");
             musicPlayer.CurrentState = musicPlayer.pausedState;

@@ -6,9 +6,9 @@ using System.Threading;
 
 namespace DesignPatterns.pizzaOrder.pattern
 {
-    class OnlinePizzaOrder : AbstractPizzaOrder
+    class OnlinePizzaStore : AbstractPizzaStore
     {
-        public OnlinePizzaOrder(){ }
+        public OnlinePizzaStore(){ }
 
         public override void servePizza()
         {

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DesignPatterns.pizzaOrder.pattern.pizza_s.factories
 {
-    class RegularPizzaFactory : PizzaFactory
+    class RegularPizzaFactory : IPizzaFactory
     {
         private void showMenu()
         {

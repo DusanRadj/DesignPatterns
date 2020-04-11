@@ -8,9 +8,9 @@ namespace DesignPatterns.pizzaOrder.pattern
 {
     class PizzaOrderApp
     {
-        private OnlinePizzaOrder onlinePizzaOrder;
-        private InPlacePizzaOrder inPlacePizzaOrder;
-        private AbstractPizzaOrder selectedPizzaStore;
+        private OnlinePizzaStore onlinePizzaOrder;
+        private InPlacePizzaStore inPlacePizzaOrder;
+        private AbstractPizzaStore selectedPizzaStore;
 
         private static PizzaOrderApp instance;
 
@@ -25,8 +25,8 @@ namespace DesignPatterns.pizzaOrder.pattern
             h2.setNextHandler(h3);
             h3.setNextHandler(h4);
 
-            this.inPlacePizzaOrder = new InPlacePizzaOrder(h1);
-            this.onlinePizzaOrder = new OnlinePizzaOrder();
+            this.inPlacePizzaOrder = new InPlacePizzaStore(h1);
+            this.onlinePizzaOrder = new OnlinePizzaStore();
             this.selectedPizzaStore = inPlacePizzaOrder;
         }
 

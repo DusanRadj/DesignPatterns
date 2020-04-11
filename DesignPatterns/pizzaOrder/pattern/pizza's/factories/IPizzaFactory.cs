@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DesignPatterns.pizzaOrder.pattern.pizza_s.factories
 {
-    interface PizzaFactory
+    interface IPizzaFactory
     {
         AbstractPizza createPizza();
     }
